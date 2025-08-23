@@ -1,0 +1,26 @@
+<svg width="120" height="30" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="badge-bg" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Badge background -->
+  <rect width="120" height="30" rx="15" fill="url(#badge-bg)"/>
+  
+  <!-- Inner border -->
+  <rect x="2" y="2" width="116" height="26" rx="13" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+  
+  <!-- Design icon (simple geometric) -->
+  <g transform="translate(8,8)">
+    <rect x="0" y="6" width="6" height="8" fill="white" opacity="0.9"/>
+    <rect x="2" y="4" width="2" height="4" fill="white" opacity="0.7"/>
+    <circle cx="10" cy="7" r="3" fill="white" opacity="0.8"/>
+    <rect x="8" y="11" width="4" height="2" fill="white" opacity="0.6"/>
+  </g>
+  
+  <!-- Text -->
+  <text x="22" y="12" font-family="Arial, sans-serif" font-size="8" fill="white" opacity="0.9">Made with</text>
+  <text x="22" y="22" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="white">Visily</text>
+</svg>

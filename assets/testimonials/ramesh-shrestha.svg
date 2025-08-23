@@ -1,0 +1,38 @@
+<svg width="120" height="120" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgRamesh" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFF8E1"/>
+      <stop offset="50%" stop-color="#FFF3C4"/>
+      <stop offset="100%" stop-color="#FFEB9C"/>
+    </linearGradient>
+    <linearGradient id="dhaka" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8B0000"/>
+      <stop offset="100%" stop-color="#DC143C"/>
+    </linearGradient>
+  </defs>
+  <circle cx="60" cy="60" r="60" fill="url(#bgRamesh)"/>
+  <!-- Traditional Dhaka Topi -->
+  <path d="M38 25c0-8 10-15 22-15s22 7 22 15c0 4-2 8-5 11l-5 2h-24l-5-2c-3-3-5-7-5-11z" fill="url(#dhaka)"/>
+  <!-- Topi pattern -->
+  <path d="M42 20c2-1 4-1 6 0M48 18c2-1 4-1 6 0M54 20c2-1 4-1 6 0M60 18c2-1 4-1 6 0M66 20c2-1 4-1 6 0M72 18c2-1 4-1 6 0" stroke="#FFD700" stroke-width="1" fill="none"/>
+  <!-- Face -->
+  <circle cx="60" cy="52" r="20" fill="#C8860D"/>
+  <!-- Hair visible under topi -->
+  <path d="M40 35c4-2 8-3 12-3h16c4 0 8 1 12 3c-2 2-4 3-6 4h-22c-2-1-4-2-6-4z" fill="#2C1810"/>
+  <!-- Eyes -->
+  <circle cx="54" cy="47" r="2.5" fill="#333"/>
+  <circle cx="66" cy="47" r="2.5" fill="#333"/>
+  <circle cx="54.5" cy="46.5" r="0.8" fill="#fff"/>
+  <circle cx="66.5" cy="46.5" r="0.8" fill="#fff"/>
+  <!-- Eyebrows -->
+  <path d="M50 43c3-1 7-1 8 0" stroke="#2C1810" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+  <path d="M62 43c3-1 7-1 8 0" stroke="#2C1810" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+  <!-- Mustache -->
+  <path d="M56 55c2-1 6-1 8 0" stroke="#2C1810" stroke-width="2" fill="none" stroke-linecap="round"/>
+  <!-- Nose -->
+  <ellipse cx="60" cy="53" rx="1.5" ry="2" fill="#B8750A"/>
+  <!-- Mouth -->
+  <path d="M57 59c2 2 4 2 6 0" stroke="#8B4513" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+  <!-- Traditional shirt collar -->
+  <path d="M45 75c6-2 12-2 15 0c3 2 9 2 15 0" stroke="#4A4A4A" stroke-width="3" fill="none"/>
+</svg>

@@ -1,0 +1,25 @@
+<svg width="120" height="120" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E8F5E8"/>
+      <stop offset="100%" stop-color="#C8E6C9"/>
+    </linearGradient>
+  </defs>
+  <circle cx="60" cy="60" r="60" fill="url(#bg1)"/>
+  <!-- Face -->
+  <circle cx="60" cy="50" r="22" fill="#F5CBA7"/>
+  <!-- Hair -->
+  <path d="M38 35c0-15 10-25 22-25s22 10 22 25c0 8-4 15-10 19-3-2-6-3-10-3s-7 1-10 3c-6-4-10-11-14-19z" fill="#8B4513"/>
+  <!-- Eyes -->
+  <circle cx="52" cy="45" r="2.5" fill="#333"/>
+  <circle cx="68" cy="45" r="2.5" fill="#333"/>
+  <circle cx="52.5" cy="44.5" r="0.8" fill="#fff"/>
+  <circle cx="68.5" cy="44.5" r="0.8" fill="#fff"/>
+  <!-- Nose -->
+  <ellipse cx="60" cy="52" rx="1.5" ry="2" fill="#E6B68A"/>
+  <!-- Mouth -->
+  <path d="M56 58c2 2 6 2 8 0" stroke="#D2691E" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+  <!-- Earrings -->
+  <circle cx="40" cy="50" r="2" fill="#FFD700"/>
+  <circle cx="80" cy="50" r="2" fill="#FFD700"/>
+</svg>

@@ -1,0 +1,29 @@
+<svg width="120" height="120" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E3F2FD"/>
+      <stop offset="100%" stop-color="#BBDEFB"/>
+    </linearGradient>
+  </defs>
+  <circle cx="60" cy="60" r="60" fill="url(#bg2)"/>
+  <!-- Face -->
+  <circle cx="60" cy="50" r="22" fill="#FDBCB4"/>
+  <!-- Hair -->
+  <path d="M38 35c0-12 10-20 22-20s22 8 22 20c0 6-2 12-6 16-4-1-8-2-12-2s-8 1-12 2c-4-4-6-10-14-16z" fill="#2C1810"/>
+  <!-- Eyes -->
+  <circle cx="52" cy="45" r="2.5" fill="#333"/>
+  <circle cx="68" cy="45" r="2.5" fill="#333"/>
+  <circle cx="52.5" cy="44.5" r="0.8" fill="#fff"/>
+  <circle cx="68.5" cy="44.5" r="0.8" fill="#fff"/>
+  <!-- Eyebrows -->
+  <path d="M48 40c3-1 7-1 8 0" stroke="#2C1810" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+  <path d="M64 40c3-1 7-1 8 0" stroke="#2C1810" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+  <!-- Nose -->
+  <ellipse cx="60" cy="52" rx="1.5" ry="2" fill="#E6A4A4"/>
+  <!-- Mouth -->
+  <path d="M56 58c2 2 6 2 8 0" stroke="#CD5C5C" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+  <!-- Glasses -->
+  <circle cx="52" cy="45" r="8" fill="none" stroke="#333" stroke-width="1.5"/>
+  <circle cx="68" cy="45" r="8" fill="none" stroke="#333" stroke-width="1.5"/>
+  <path d="M60 45h0" stroke="#333" stroke-width="1.5"/>
+</svg>

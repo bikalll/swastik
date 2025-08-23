@@ -1,0 +1,30 @@
+<svg width="120" height="120" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFF3E0"/>
+      <stop offset="100%" stop-color="#FFE0B2"/>
+    </linearGradient>
+  </defs>
+  <circle cx="60" cy="60" r="60" fill="url(#bg3)"/>
+  <!-- Face -->
+  <circle cx="60" cy="50" r="22" fill="#F4C2A1"/>
+  <!-- Hair -->
+  <path d="M35 32c0-18 12-28 25-28s25 10 25 28c0 10-5 18-12 23-4-3-8-4-13-4s-9 1-13 4c-7-5-12-13-12-23z" fill="#8B4513"/>
+  <!-- Hair details -->
+  <path d="M42 28c3-4 8-6 13-5" stroke="#A0522D" stroke-width="1" fill="none"/>
+  <path d="M65 25c4-2 8-1 10 2" stroke="#A0522D" stroke-width="1" fill="none"/>
+  <!-- Eyes -->
+  <circle cx="52" cy="45" r="2.5" fill="#333"/>
+  <circle cx="68" cy="45" r="2.5" fill="#333"/>
+  <circle cx="52.5" cy="44.5" r="0.8" fill="#fff"/>
+  <circle cx="68.5" cy="44.5" r="0.8" fill="#fff"/>
+  <!-- Eyelashes -->
+  <path d="M52 40l0-2M49 41l-1-2M55 41l1-2" stroke="#333" stroke-width="0.8"/>
+  <path d="M68 40l0-2M65 41l-1-2M71 41l1-2" stroke="#333" stroke-width="0.8"/>
+  <!-- Nose -->
+  <ellipse cx="60" cy="52" rx="1.5" ry="2" fill="#E09876"/>
+  <!-- Mouth -->
+  <path d="M56 58c2 3 6 3 8 0" stroke="#C44569" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+  <!-- Lipstick shine -->
+  <ellipse cx="59" cy="57.5" rx="2" ry="0.8" fill="#FF6B9D" opacity="0.6"/>
+</svg>
