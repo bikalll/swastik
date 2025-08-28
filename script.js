@@ -748,19 +748,16 @@ const initTestimonials = () => {
 
 class FAQAccordion {
   constructor() {
-    this.faqCards = document.querySelectorAll('.faq__card, .faq__item');
-    this.particleSystem = null;
+    this.faqCards = document.querySelectorAll('.faq__card');
     this.initAccordion();
-    this.initParticleSystem();
   }
   
   initAccordion() {
     if (!this.faqCards.length) return;
     
-    this.faqCards.forEach((card, index) => {
+    this.faqCards.forEach((card) => {
       const question = card.querySelector('.faq__question');
       const answer = card.querySelector('.faq__answer');
-      const icon = card.querySelector('.faq__question-icon, .faq__icon');
       
       if (!question || !answer) return;
       
@@ -770,579 +767,69 @@ class FAQAccordion {
       
       // Add click handler
       question.addEventListener('click', () => {
-        this.toggleCard(card, question, answer, icon);
+        this.toggleCard(card, question, answer);
       });
       
       // Add keyboard support
       question.addEventListener('keydown', (e) => {
         if (e.key === 'Enter' || e.key === ' ') {
           e.preventDefault();
-          this.toggleCard(card, question, answer, icon);
+          this.toggleCard(card, question, answer);
         }
-      });
-      
-      // Enhanced hover effects for luxury cards
-      question.addEventListener('mouseenter', () => {
-        if (!card.classList.contains('is-open')) {
-          this.addLuxuryHoverEffect(card);
-        }
-      });
-      
-      question.addEventListener('mouseleave', () => {
-        if (!card.classList.contains('is-open')) {
-          this.removeLuxuryHoverEffect(card);
-        }
-      });
-      
-      // Add focus management
-      question.addEventListener('focus', () => {
-        this.addFocusEffect(card);
-      });
-      
-      question.addEventListener('blur', () => {
-        this.removeFocusEffect(card);
       });
     });
-    
-    // Initialize intersection observer for scroll animations
-    this.initScrollAnimations();
-    
-    // Initialize particle interactions
-    this.initParticleInteractions();
   }
   
-  // Luxury card methods
-  toggleCard(card, question, answer, icon) {
+  toggleCard(card, question, answer) {
     const isOpen = card.classList.contains('is-open');
     
     if (isOpen) {
-      this.closeLuxuryCard(card, question, answer, icon);
+      this.closeCard(card, question, answer);
     } else {
-      // Close other cards (optional - remove for multiple open cards)
+      // Close other cards first (accordion behavior)
       this.closeAllCards();
-      this.openLuxuryCard(card, question, answer, icon);
+      this.openCard(card, question, answer);
     }
   }
   
-  openLuxuryCard(card, question, answer, icon) {
+  openCard(card, question, answer) {
     card.classList.add('is-open');
     answer.classList.add('is-open');
     answer.setAttribute('aria-hidden', 'false');
     question.setAttribute('aria-expanded', 'true');
     
-    // Enhanced smooth height animation
-    const content = answer.querySelector('.faq__answer-content, .faq__answer-wrapper');
+    // Calculate and set height
+    const content = answer.querySelector('.faq__answer-content');
     if (content) {
-      const height = content.scrollHeight + 40; // Add padding
+      const height = content.scrollHeight + 24; // Add padding
       answer.style.maxHeight = height + 'px';
     }
-    
-    // Luxury entrance animation
-    setTimeout(() => {
-      if (content) {
-        content.style.animation = 'luxurySlideIn 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
-      }
-    }, 100);
-    
-    // Add particle effect
-    this.triggerParticleEffect(card);
-    
-    // Analytics tracking
-    this.trackFAQInteraction(card, 'open');
-    
-    // Announce to screen readers
-    this.announceToScreenReader(card, true);
   }
   
-  closeLuxuryCard(card, question, answer, icon) {
+  closeCard(card, question, answer) {
     card.classList.remove('is-open');
     answer.classList.remove('is-open');
     answer.setAttribute('aria-hidden', 'true');
     question.setAttribute('aria-expanded', 'false');
     
-    // Reset height with animation
     answer.style.maxHeight = '0px';
-    
-    // Analytics tracking
-    this.trackFAQInteraction(card, 'close');
-    
-    // Announce to screen readers
-    this.announceToScreenReader(card, false);
   }
   
   closeAllCards() {
     this.faqCards.forEach(card => {
       const question = card.querySelector('.faq__question');
       const answer = card.querySelector('.faq__answer');
-      const icon = card.querySelector('.faq__question-icon, .faq__icon');
       
       if (card.classList.contains('is-open')) {
-        this.closeLuxuryCard(card, question, answer, icon);
+        this.closeCard(card, question, answer);
       }
     });
-  }
-  
-  addLuxuryHoverEffect(card) {
-    const glow = card.querySelector('.faq__card-glow');
-    const questionNumber = card.querySelector('.faq__question-number');
-    const icon = card.querySelector('.faq__question-icon, .faq__icon');
-    
-    // Activate glow effect
-    if (glow) {
-      glow.style.opacity = '0.5';
-    }
-    
-    // Scale question number
-    if (questionNumber) {
-      questionNumber.style.transform = 'scale(1.05)';
-      questionNumber.style.boxShadow = '0 4px 20px rgba(122, 81, 48, 0.2)';
-    }
-    
-    // Enhance icon
-    if (icon) {
-      icon.style.transform = 'scale(1.05) rotate(5deg)';
-      icon.style.boxShadow = '0 6px 25px rgba(122, 81, 48, 0.15)';
-    }
-  }
-  
-  removeLuxuryHoverEffect(card) {
-    const glow = card.querySelector('.faq__card-glow');
-    const questionNumber = card.querySelector('.faq__question-number');
-    const icon = card.querySelector('.faq__question-icon, .faq__icon');
-    
-    // Deactivate glow effect
-    if (glow) {
-      glow.style.opacity = '0';
-    }
-    
-    // Reset question number
-    if (questionNumber) {
-      questionNumber.style.transform = '';
-      questionNumber.style.boxShadow = '';
-    }
-    
-    // Reset icon
-    if (icon) {
-      icon.style.transform = '';
-      icon.style.boxShadow = '';
-    }
-  }
-  
-  addFocusEffect(card) {
-    card.style.outline = '3px solid rgba(122, 81, 48, 0.3)';
-    card.style.outlineOffset = '2px';
-  }
-  
-  removeFocusEffect(card) {
-    card.style.outline = '';
-    card.style.outlineOffset = '';
-  }
-  
-  initParticleSystem() {
-    const particleContainer = document.getElementById('faq-particles');
-    if (!particleContainer) return;
-    
-    // Simple particle system for luxury effect
-    this.particles = [];
-    
-    for (let i = 0; i < 20; i++) {
-      const particle = document.createElement('div');
-      particle.style.cssText = `
-        position: absolute;
-        width: 3px;
-        height: 3px;
-        background: rgba(122, 81, 48, 0.3);
-        border-radius: 50%;
-        pointer-events: none;
-        opacity: 0;
-        transition: all 0.3s ease;
-      `;
-      
-      // Random positioning
-      particle.style.left = Math.random() * 100 + '%';
-      particle.style.top = Math.random() * 100 + '%';
-      
-      particleContainer.appendChild(particle);
-      this.particles.push(particle);
-    }
-    
-    // Animate particles
-    this.animateParticles();
-  }
-  
-  animateParticles() {
-    if (!this.particles || !this.particles.length) return;
-    
-    const animateParticle = (particle, index) => {
-      const delay = index * 200;
-      
-      setTimeout(() => {
-        particle.style.opacity = Math.random() * 0.6;
-        particle.style.transform = `translateY(-${Math.random() * 20}px)`;
-        
-        setTimeout(() => {
-          particle.style.opacity = '0';
-          particle.style.transform = 'translateY(0)';
-        }, 2000);
-      }, delay);
-    };
-    
-    const startAnimation = () => {
-      this.particles.forEach(animateParticle);
-      setTimeout(startAnimation, 8000); // Repeat every 8 seconds
-    };
-    
-    startAnimation();
-  }
-  
-  initParticleInteractions() {
-    // Particle effects on FAQ interactions
-    this.faqCards.forEach(card => {
-      card.addEventListener('mouseenter', () => {
-        this.activateNearbyParticles(card);
-      });
-    });
-  }
-  
-  activateNearbyParticles(card) {
-    if (!this.particles) return;
-    
-    const rect = card.getBoundingClientRect();
-    const centerX = rect.left + rect.width / 2;
-    const centerY = rect.top + rect.height / 2;
-    
-    // Activate particles near the card
-    this.particles.forEach(particle => {
-      const particleRect = particle.getBoundingClientRect();
-      const distance = Math.sqrt(
-        Math.pow(particleRect.left - centerX, 2) + 
-        Math.pow(particleRect.top - centerY, 2)
-      );
-      
-      if (distance < 200) {
-        particle.style.opacity = '0.8';
-        particle.style.transform = 'scale(1.5)';
-        
-        setTimeout(() => {
-          particle.style.opacity = '0.2';
-          particle.style.transform = 'scale(1)';
-        }, 1000);
-      }
-    });
-  }
-  
-  triggerParticleEffect(card) {
-    // Create temporary particles for opening effect
-    const rect = card.getBoundingClientRect();
-    const container = document.querySelector('.faq');
-    if (!container) return;
-    
-    for (let i = 0; i < 8; i++) {
-      const particle = document.createElement('div');
-      particle.style.cssText = `
-        position: absolute;
-        width: 4px;
-        height: 4px;
-        background: linear-gradient(45deg, var(--clr-accent), var(--clr-gold));
-        border-radius: 50%;
-        pointer-events: none;
-        left: ${rect.left + rect.width / 2}px;
-        top: ${rect.top + rect.height / 2}px;
-        z-index: 1000;
-        opacity: 1;
-      `;
-      
-      container.appendChild(particle);
-      
-      // Animate particle
-      const angle = (i / 8) * Math.PI * 2;
-      const distance = 50 + Math.random() * 30;
-      const x = Math.cos(angle) * distance;
-      const y = Math.sin(angle) * distance;
-      
-      particle.animate([
-        { transform: 'translate(0, 0) scale(1)', opacity: 1 },
-        { transform: `translate(${x}px, ${y}px) scale(0.5)`, opacity: 0 }
-      ], {
-        duration: 800,
-        easing: 'cubic-bezier(0.4, 0, 0.2, 1)'
-      }).onfinish = () => {
-        particle.remove();
-      };
-    }
-  }
-  
-  announceToScreenReader(card, isOpening) {
-    const questionText = card.querySelector('.faq__question-text')?.textContent;
-    if (!questionText) return;
-    
-    const announcement = document.createElement('div');
-    announcement.setAttribute('aria-live', 'polite');
-    announcement.setAttribute('aria-atomic', 'true');
-    announcement.style.cssText = `
-      position: absolute;
-      left: -10000px;
-      width: 1px;
-      height: 1px;
-      overflow: hidden;
-    `;
-    
-    const message = isOpening 
-      ? `FAQ expanded: ${questionText}`
-      : `FAQ collapsed: ${questionText}`;
-    
-    announcement.textContent = message;
-    document.body.appendChild(announcement);
-    
-    setTimeout(() => {
-      document.body.removeChild(announcement);
-    }, 1000);
-  }
-  
-  toggleItem(item, question, answer, icon) {
-    const isOpen = item.classList.contains('is-open');
-    
-    if (isOpen) {
-      this.closeItem(item, question, answer, icon);
-    } else {
-      // Close other items (optional - remove for multiple open items)
-      this.closeAllItems();
-      this.openItem(item, question, answer, icon);
-    }
-  }
-  
-  openItem(item, question, answer, icon) {
-    item.classList.add('is-open');
-    answer.classList.add('is-open');
-    answer.setAttribute('aria-hidden', 'false');
-    question.setAttribute('aria-expanded', 'true');
-    
-    // Smooth height animation
-    const content = answer.querySelector('.faq__answer-content');
-    if (content) {
-      const height = content.scrollHeight;
-      answer.style.maxHeight = height + 'px';
-    }
-    
-    // Add entrance animation for content
-    setTimeout(() => {
-      if (content) {
-        content.style.animation = 'slideDown 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
-      }
-    }, 100);
-    
-    // Analytics tracking (optional)
-    this.trackFAQInteraction(item, 'open');
-  }
-  
-  closeItem(item, question, answer, icon) {
-    item.classList.remove('is-open');
-    answer.classList.remove('is-open');
-    answer.setAttribute('aria-hidden', 'true');
-    question.setAttribute('aria-expanded', 'false');
-    
-    // Reset height
-    answer.style.maxHeight = '0px';
-    
-    // Analytics tracking (optional)
-    this.trackFAQInteraction(item, 'close');
-  }
-  
-  closeAllItems() {
-    this.faqItems.forEach(item => {
-      const question = item.querySelector('.faq__question');
-      const answer = item.querySelector('.faq__answer');
-      const icon = item.querySelector('.faq__icon svg');
-      
-      if (item.classList.contains('is-open')) {
-        this.closeItem(item, question, answer, icon);
-      }
-    });
-  }
-  
-  addHoverEffect(item) {
-    const icon = item.querySelector('.faq__icon');
-    if (icon) {
-      icon.style.transform = 'scale(1.05)';
-      icon.style.boxShadow = '0 4px 12px rgba(122, 81, 48, 0.15)';
-    }
-  }
-  
-  removeHoverEffect(item) {
-    const icon = item.querySelector('.faq__icon');
-    if (icon) {
-      icon.style.transform = '';
-      icon.style.boxShadow = '';
-    }
-  }
-  
-  initScrollAnimations() {
-    const faqSection = document.querySelector('.faq');
-    const header = document.querySelector('.faq__header');
-    const cards = document.querySelectorAll('.faq__card, .faq__item');
-    const cta = document.querySelector('.faq__cta');
-    
-    if (!faqSection) return;
-    
-    // Set initial styles
-    if (header) {
-      header.style.opacity = '0';
-      header.style.transform = 'translateY(30px)';
-      header.style.transition = 'opacity 0.8s ease-out, transform 0.8s ease-out';
-    }
-    
-    cards.forEach((card, index) => {
-      card.style.opacity = '0';
-      card.style.transform = 'translateY(20px)';
-      const delay = Math.min(index, 6) * 0.1;
-      card.style.transition = `opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1) ${delay}s, transform 0.6s cubic-bezier(0.4, 0, 0.2, 1) ${delay}s`;
-    });
-    
-    if (cta) {
-      cta.style.opacity = '0';
-      cta.style.transform = 'translateY(20px)';
-      cta.style.transition = 'opacity 0.6s ease-out 0.8s, transform 0.6s ease-out 0.8s';
-    }
-    
-    // Intersection Observer
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const element = entry.target;
-          element.style.opacity = '1';
-          element.style.transform = 'translateY(0)';
-          observer.unobserve(element);
-        }
-      });
-    }, {
-      threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px'
-    });
-    
-    // Observe elements
-    if (header) observer.observe(header);
-    cards.forEach(card => observer.observe(card));
-    if (cta) observer.observe(cta);
-  }
-  
-  trackFAQInteraction(item, action) {
-    // Optional analytics tracking
-    const questionText = item.querySelector('.faq__question-text')?.textContent;
-    if (typeof gtag !== 'undefined') {
-      gtag('event', 'faq_interaction', {
-        'faq_question': questionText,
-        'action': action
-      });
-    }
-  }
-  
-  // Public method to open specific FAQ by index
-  openFAQByIndex(index) {
-    if (index >= 0 && index < this.faqItems.length) {
-      const item = this.faqItems[index];
-      const question = item.querySelector('.faq__question');
-      const answer = item.querySelector('.faq__answer');
-      const icon = item.querySelector('.faq__icon svg');
-      
-      if (!item.classList.contains('is-open')) {
-        this.toggleItem(item, question, answer, icon);
-      }
-    }
-  }
-  
-  // Public method to close all FAQs
-  closeAll() {
-    this.closeAllItems();
   }
 }
 
-// Enhanced FAQ interactions
-const enhanceFAQInteractions = () => {
-  const faqItems = document.querySelectorAll('.faq__item');
-  
-  faqItems.forEach(item => {
-    const question = item.querySelector('.faq__question');
-    
-    if (question) {
-      // Add ripple effect on click
-      question.addEventListener('click', (e) => {
-        const ripple = document.createElement('div');
-        const rect = question.getBoundingClientRect();
-        const size = Math.max(rect.width, rect.height);
-        const x = e.clientX - rect.left - size / 2;
-        const y = e.clientY - rect.top - size / 2;
-        
-        ripple.style.cssText = `
-          position: absolute;
-          width: ${size}px;
-          height: ${size}px;
-          left: ${x}px;
-          top: ${y}px;
-          background: rgba(122, 81, 48, 0.1);
-          border-radius: 50%;
-          pointer-events: none;
-          transform: scale(0);
-          animation: faqRipple 0.6s ease-out;
-          z-index: 1;
-        `;
-        
-        question.appendChild(ripple);
-        
-        setTimeout(() => {
-          if (ripple.parentNode) {
-            ripple.parentNode.removeChild(ripple);
-          }
-        }, 600);
-      });
-    }
-  });
-};
-
-// Add FAQ animation styles
-const addFAQAnimations = () => {
-  if (document.querySelector('#faq-animations')) return;
-  
-  const style = document.createElement('style');
-  style.id = 'faq-animations';
-  style.textContent = `
-    @keyframes faqRipple {
-      to {
-        transform: scale(2);
-        opacity: 0;
-      }
-    }
-    
-    .faq__question {
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .faq__item:hover .faq__icon {
-      animation: iconBounce 0.6s ease-in-out;
-    }
-    
-    @keyframes iconBounce {
-      0%, 100% { transform: scale(1.05); }
-      50% { transform: scale(1.15); }
-    }
-    
-    .faq__item.is-open .faq__icon {
-      animation: iconRotate 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    
-    @keyframes iconRotate {
-      0% { transform: rotate(0deg) scale(1.1); }
-      100% { transform: rotate(45deg) scale(1.1); }
-    }
-  `;
-  document.head.appendChild(style);
-};
-
-// Initialize FAQ system
+// Simple FAQ initialization
 const initFAQ = () => {
   new FAQAccordion();
-  enhanceFAQInteractions();
-  addFAQAnimations();
 };
 
 // ===================================

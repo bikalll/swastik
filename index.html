@@ -27,9 +27,9 @@
           <li class="nav__item nav__item--has-submenu nav__item--about-us">
             <button class="nav__link nav__link--toggle" aria-haspopup="true" aria-expanded="false">About Us</button>
             <ul class="submenu" role="menu" aria-label="About us">
-              <li role="none"><a role="menuitem" class="submenu__link" href="#" data-section=".janaki-legacy">Janaki Legacy</a></li>
-              <li role="none"><a role="menuitem" class="submenu__link" href="#">Message from Chairman</a></li>
-              <li role="none"><a role="menuitem" class="submenu__link" href="#">Message from MD</a></li>
+              <li role="none"><a role="menuitem" class="submenu__link" href="janaki-legacy.html" data-section=".janaki-legacy">Janaki Legacy</a></li>
+              <li role="none"><a role="menuitem" class="submenu__link" href="message-from-chairman.html">Message from Chairman</a></li>
+              <li role="none"><a role="menuitem" class="submenu__link" href="message-from-md.html">Message from MD</a></li>
             </ul>
           </li>
           <li><a class="nav__link" href="#" data-section=".collections">Portfolio</a></li>
@@ -71,6 +71,15 @@
               <span class="janaki-legacy__eyebrow">Our Heritage</span>
               <h2 id="janaki-title" class="janaki-legacy__title">Janaki Legacy</h2>
             </header>
+            
+            <!-- Mobile-only image positioned between title and description -->
+            <div class="janaki-legacy__image-wrapper janaki-legacy__image-wrapper--mobile">
+              <div class="janaki-legacy__image-container">
+                <img class="janaki-legacy__image" src="assets/janakichair.png" alt="Janaki Legacy Heritage Chair" />
+                <div class="janaki-legacy__image-overlay"></div>
+              </div>
+            </div>
+            
             <div class="janaki-legacy__text">
               <p class="janaki-legacy__description">
                 For generations, the Janaki Legacy has been synonymous with exceptional craftsmanship and timeless design. 
@@ -88,8 +97,8 @@
             </div>
           </div>
           
-          <!-- Image Right -->
-          <div class="janaki-legacy__image-wrapper">
+          <!-- Desktop-only image column (right side) -->
+          <div class="janaki-legacy__image-wrapper janaki-legacy__image-wrapper--desktop">
             <div class="janaki-legacy__image-container">
               <img class="janaki-legacy__image" src="assets/janakichair.png" alt="Janaki Legacy Heritage Chair" />
               <div class="janaki-legacy__image-overlay"></div>
@@ -641,42 +650,19 @@
       </div>
     </section>
     
-    <!-- FAQ Section - Premium Luxury Design -->
+    <!-- FAQ Section - Clean & Elegant Design -->
     <section class="faq" aria-labelledby="faq-title">
-      <!-- Floating Decorative Elements -->
-      <div class="faq__atmosphere">
-        <div class="faq__float-element faq__float-element--1"></div>
-        <div class="faq__float-element faq__float-element--2"></div>
-        <div class="faq__float-element faq__float-element--3"></div>
-        <div class="faq__particle-system" id="faq-particles"></div>
-      </div>
-      
-      <!-- Background Layers -->
-      <div class="faq__background">
-        <div class="faq__gradient-layer"></div>
-        <div class="faq__texture-layer"></div>
-        <div class="faq__spotlight"></div>
-      </div>
       
       <div class="container">
         <header class="faq__header">
-          <div class="faq__eyebrow-wrapper">
-            <span class="faq__eyebrow">Your Questions Answered</span>
-            <div class="faq__eyebrow-accent"></div>
-          </div>
-          <h2 id="faq-title" class="faq__title">
-            <span class="faq__title-main">Frequently Asked</span>
-            <span class="faq__title-accent">Questions</span>
-          </h2>
-          <p class="faq__subtitle">Get expert answers to common questions about our luxury interior design services, bespoke project timelines, and transparent pricing structures</p>
-          <div class="faq__header-decoration"></div>
+          <span class="faq__eyebrow">Your Questions Answered</span>
+          <h2 id="faq-title" class="faq__title">Frequently Asked Questions</h2>
+          <p class="faq__subtitle">Get expert answers to common questions about our interior design services, project timelines, and pricing structures</p>
         </header>
         
         <div class="faq__container">
           <div class="faq__grid">
-            <article class="faq__card faq__card--premium" data-faq="1">
-              <div class="faq__card-glow"></div>
-              <div class="faq__card-content">
+            <article class="faq__card" data-faq="1">
                 <button class="faq__question" aria-expanded="false" aria-controls="faq-answer-1" tabindex="0">
                   <div class="faq__question-wrapper">
                     <div class="faq__question-number">01</div>
@@ -697,18 +683,12 @@
                     <div class="faq__answer-content">
                       <p class="faq__answer-text">Interior design investments are influenced by multiple sophisticated factors including project scope and complexity, spatial requirements, premium material selections, bespoke furniture procurement, and desired timeline flexibility.</p>
                       <p class="faq__answer-text">Our residential projects encompass everything from elegant room refreshes to complete luxury home transformations. We provide comprehensive investment breakdowns covering initial design consultation, detailed 3D visualization services, curated furniture selection, and white-glove installation management.</p>
-                      <div class="faq__answer-highlight">
-                        <span class="faq__highlight-text">✨ Personalized consultation available</span>
-                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
             </article>
             
-            <article class="faq__card faq__card--premium" data-faq="2">
-              <div class="faq__card-glow"></div>
-              <div class="faq__card-content">
+            <article class="faq__card" data-faq="2">
                 <button class="faq__question" aria-expanded="false" aria-controls="faq-answer-2" tabindex="0">
                   <div class="faq__question-wrapper">
                     <div class="faq__question-number">02</div>
@@ -729,18 +709,12 @@
                     <div class="faq__answer-content">
                       <p class="faq__answer-text">Project timelines vary based on scope and complexity. Elegant single room makeovers typically require 2-4 weeks, while comprehensive luxury home transformations span 6-12 weeks.</p>
                       <p class="faq__answer-text">Our meticulous process includes initial design consultation (1 week), creative development with detailed 3D previews (2-3 weeks), curated furniture selection and premium procurement (2-4 weeks), and professional installation management (1-2 weeks).</p>
-                      <div class="faq__answer-highlight">
-                        <span class="faq__highlight-text">📅 Detailed timeline provided during consultation</span>
-                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
             </article>
             
-            <article class="faq__card faq__card--premium" data-faq="3">
-              <div class="faq__card-glow"></div>
-              <div class="faq__card-content">
+            <article class="faq__card" data-faq="3">
                 <button class="faq__question" aria-expanded="false" aria-controls="faq-answer-3" tabindex="0">
                   <div class="faq__question-wrapper">
                     <div class="faq__question-number">03</div>
@@ -761,18 +735,12 @@
                     <div class="faq__answer-content">
                       <p class="faq__answer-text">We specialize in maximizing small spaces through smart furniture selection, multi-functional pieces, and space-saving solutions. Our small space services include studio apartment design, compact home offices, efficient storage solutions, and creative room layouts.</p>
                       <p class="faq__answer-text">We use 3D design software to visualize space optimization before implementation, ensuring every square foot is utilized effectively while maintaining style and comfort.</p>
-                      <div class="faq__answer-highlight">
-                        <span class="faq__highlight-text">🏠 Smart space solutions available</span>
-                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
             </article>
           
-          <article class="faq__card faq__card--premium" data-faq="4">
-            <div class="faq__card-glow"></div>
-            <div class="faq__card-content">
+          <article class="faq__card" data-faq="4">
               <button class="faq__question" aria-expanded="false" aria-controls="faq-answer-4" tabindex="0">
                 <div class="faq__question-wrapper">
                   <div class="faq__question-number">04</div>
@@ -793,18 +761,12 @@
                   <div class="faq__answer-content">
                     <p class="faq__answer-text">Yes, we provide comprehensive 3D previews for all projects using advanced design software. Our virtual consultations include detailed 3D renderings, material samples, color schemes, and furniture placement.</p>
                     <p class="faq__answer-text">This allows you to visualize your space transformation before any purchases or changes are made. We also offer virtual design consultations via video calls for remote clients, making our services accessible nationwide.</p>
-                    <div class="faq__answer-highlight">
-                      <span class="faq__highlight-text">💻 3D visualization included in all projects</span>
-                    </div>
                   </div>
                 </div>
               </div>
-            </div>
           </article>
           
-          <article class="faq__card faq__card--premium" data-faq="5">
-            <div class="faq__card-glow"></div>
-            <div class="faq__card-content">
+          <article class="faq__card" data-faq="5">
               <button class="faq__question" aria-expanded="false" aria-controls="faq-answer-5" tabindex="0">
                 <div class="faq__question-wrapper">
                   <div class="faq__question-number">05</div>
@@ -825,18 +787,12 @@
                   <div class="faq__answer-content">
                     <p class="faq__answer-text">Our furniture selection process combines your style preferences with our expert knowledge of quality, durability, and design trends. We source from trusted manufacturers and artisans, offering options from budget-friendly to luxury pieces.</p>
                     <p class="faq__answer-text">Our procurement services include furniture ordering, delivery coordination, quality inspection, and professional installation. We handle all logistics so you can focus on enjoying your transformed space.</p>
-                    <div class="faq__answer-highlight">
-                      <span class="faq__highlight-text">🛋️ End-to-end furniture management</span>
-                    </div>
                   </div>
                 </div>
               </div>
-            </div>
           </article>
           
-          <article class="faq__card faq__card--premium" data-faq="6">
-            <div class="faq__card-glow"></div>
-            <div class="faq__card-content">
+          <article class="faq__card" data-faq="6">
               <button class="faq__question" aria-expanded="false" aria-controls="faq-answer-6" tabindex="0">
                 <div class="faq__question-wrapper">
                   <div class="faq__question-number">06</div>
@@ -857,18 +813,12 @@
                   <div class="faq__answer-content">
                     <p class="faq__answer-text">Swastik Interiors combines traditional craftsmanship with modern design innovation. Our Janaki Legacy collection represents our commitment to timeless quality and attention to detail.</p>
                     <p class="faq__answer-text">We offer personalized service, transparent pricing, comprehensive 3D design previews, and end-to-end project management. With over 15 years of experience and 98% client satisfaction, we deliver exceptional results that exceed expectations while respecting your budget and timeline.</p>
-                    <div class="faq__answer-highlight">
-                      <span class="faq__highlight-text">⭐ 98% client satisfaction guarantee</span>
-                    </div>
                   </div>
                 </div>
               </div>
-            </div>
           </article>
           
-          <article class="faq__card faq__card--premium" data-faq="7">
-            <div class="faq__card-glow"></div>
-            <div class="faq__card-content">
+          <article class="faq__card" data-faq="7">
               <button class="faq__question" aria-expanded="false" aria-controls="faq-answer-7" tabindex="0">
                 <div class="faq__question-wrapper">
                   <div class="faq__question-number">07</div>
@@ -889,13 +839,9 @@
                   <div class="faq__answer-content">
                     <p class="faq__answer-text">Absolutely! We provide comprehensive post-completion support including a 1-year warranty on all our work, furniture maintenance guidance, and seasonal touch-up services.</p>
                     <p class="faq__answer-text">Our client support team is available for any questions or adjustments needed after project completion. We also offer annual design refresh consultations to keep your space updated with current trends while maintaining its timeless appeal.</p>
-                    <div class="faq__answer-highlight">
-                      <span class="faq__highlight-text">🛡️ 1-year comprehensive warranty included</span>
-                    </div>
                   </div>
                 </div>
               </div>
-            </div>
           </article>
           </div>
         </div>
@@ -1028,9 +974,9 @@
           <div class="footer__nav-column">
             <h4 class="footer__nav-title">Company</h4>
             <ul class="footer__nav-list">
-              <li><a href="#about" class="footer__nav-link">About Us</a></li>
-              <li><a href="#services" class="footer__nav-link">Services</a></li>
-              <li><a href="#team" class="footer__nav-link">Our Team</a></li>
+              <li><a href="janaki-legacy.html" class="footer__nav-link">Janaki Legacy</a></li>
+              <li><a href="message-from-chairman.html" class="footer__nav-link">Message from Chairman</a></li>
+              <li><a href="message-from-md.html" class="footer__nav-link">Message from MD</a></li>
               <li><a href="#testimonials" class="footer__nav-link">Testimonials</a></li>
             </ul>
           </div>
