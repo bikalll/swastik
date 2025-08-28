@@ -2630,7 +2630,51 @@ site-header::before{content:"";position:absolute;inset:0;pointer-events:none;bac
     height: 40px;
   }
 }
-/* Mobile Responsive Features Section */
+/* Enhanced Mobile Typography and Spacing */
+@media (max-width: 768px) {
+  /* Improved text readability on mobile */
+  body {
+    line-height: 1.6;
+  }
+  
+  /* Section spacing optimizations */
+  section {
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+  }
+  
+  /* Enhanced header spacing */
+  .page-hero,
+  .janaki-legacy-page,
+  .message-page,
+  .heritage-milestones {
+    margin-bottom: 0;
+  }
+  
+  /* Better paragraph spacing */
+  p {
+    margin-bottom: 16px;
+  }
+  
+  p:last-child {
+    margin-bottom: 0;
+  }
+  
+  /* Improved list spacing */
+  .heritage-milestones__timeline {
+    gap: 24px;
+  }
+  
+  /* Better button spacing */
+  .btn {
+    margin: 8px 4px;
+  }
+  
+  /* Improved form elements on mobile */
+  input, textarea, select {
+    font-size: 16px; /* Prevents zoom on iOS */
+  }
+}
 @media (max-width:992px){
   .features__grid {
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -2692,6 +2736,9 @@ site-header::before{content:"";position:absolute;inset:0;pointer-events:none;bac
     transition: all 0.2s ease;
     padding: 8px;
     position: relative;
+    /* Improved touch target */
+    min-width: 48px;
+    min-height: 48px;
   }
   
   .nav__toggle-bar {
@@ -3147,48 +3194,50 @@ site-header::before{content:"";position:absolute;inset:0;pointer-events:none;bac
 .jl-animate.is-inview .janaki-legacy__image-container { transition-delay: 120ms; }
 
 /* Mobile Responsive - Janaki Legacy */
+/* Janaki Legacy Page Layout Responsive Rules */
+.janaki-legacy-page__grid {
+  display: grid;
+  grid-template-columns: 1fr 400px;
+  gap: 60px;
+  align-items: start;
+}
+
+/* Desktop Image Wrapper - Hidden on Mobile */
+.janaki-legacy-page__image-wrapper--desktop {
+  display: block;
+}
+
+/* Mobile Image Wrapper - Hidden on Desktop */
+.janaki-legacy-page__image-wrapper--mobile {
+  display: none;
+}
+
 @media (max-width: 992px) {
-  .janaki-legacy__grid {
+  .janaki-legacy-page__grid {
     grid-template-columns: 1fr;
-    gap: 0;
+    gap: 40px;
     text-align: center;
   }
   
   /* Show mobile image wrapper, hide desktop image wrapper */
-  .janaki-legacy__image-wrapper--mobile {
+  .janaki-legacy-page__image-wrapper--mobile {
     display: block;
-    max-width: 400px;
-    margin: 32px auto;
+    max-width: 350px;
+    margin: 24px auto;
   }
   
-  .janaki-legacy__image-wrapper--desktop {
+  .janaki-legacy-page__image-wrapper--desktop {
     display: none;
   }
   
-  .janaki-legacy {
-    padding: 60px 0 80px;
+  .janaki-legacy-page__content {
+    display: flex;
+    flex-direction: column;
   }
   
-  .janaki-legacy__title {
-    font-size: clamp(28px, 3.5vw, 36px);
-    margin-bottom: 20px;
-  }
-  
-  .janaki-legacy__description {
-    font-size: 15px;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  
-  /* Enhanced image container for tablets */
-  .janaki-legacy__image-container {
-    background: transparent;
-    border-radius: 20px;
-    padding: 0;
-    box-shadow: none;
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
+  /* Ensure mobile image appears between header and text */
+  .janaki-legacy-page__text {
+    order: 2;
   }
 }
 
@@ -3943,73 +3992,404 @@ site-header::before{content:"";position:absolute;inset:0;pointer-events:none;bac
 }
 
 @media (max-width: 768px) {
+  /* Enhanced Page Hero Mobile Styles */
   .page-hero {
-    padding: 120px 0 60px;
+    padding: 100px 0 50px;
+    background-attachment: scroll; /* Fix iOS parallax issues */
   }
   
   .page-hero__title {
-    font-size: clamp(28px, 5vw, 42px);
+    font-size: clamp(24px, 6vw, 36px);
+    line-height: 1.1;
+    margin-bottom: 12px;
   }
   
+  .page-hero__subtitle {
+    font-size: clamp(14px, 3.5vw, 18px);
+    line-height: 1.4;
+  }
+  
+  .page-hero__content {
+    padding: 0 16px;
+  }
+  
+  /* Breadcrumb Mobile Optimization */
+  .breadcrumb {
+    margin-bottom: 20px;
+  }
+  
+  .breadcrumb__list {
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+  
+  .breadcrumb__link,
+  .breadcrumb__text {
+    font-size: 12px;
+  }
+  
+  /* Janaki Legacy Page Mobile Enhancements */
   .janaki-legacy-page {
-    padding: 60px 0 80px;
+    padding: 50px 0 70px;
+  }
+  
+  .janaki-legacy-page__grid {
+    gap: 32px;
+  }
+  
+  .janaki-legacy-page__header {
+    margin-bottom: 24px;
+    text-align: center;
+  }
+  
+  .janaki-legacy-page__eyebrow {
+    font-size: 11px;
+    padding: 6px 14px;
+  }
+  
+  .janaki-legacy-page__title {
+    font-size: clamp(24px, 5vw, 32px);
+    margin-bottom: 16px;
   }
   
   .janaki-legacy-page__image-wrapper--mobile {
-    max-width: 320px;
-    margin: 28px auto;
+    max-width: 280px;
+    margin: 20px auto;
+    order: -1; /* Show image before content on mobile */
   }
   
-  .janaki-legacy-page__features {
-    padding: 24px;
+  .janaki-legacy-page__image {
+    border-radius: 12px;
   }
   
-  .janaki-legacy-page__cta {
+  .janaki-legacy-page__description {
+    font-size: 15px;
+    line-height: 1.7;
+    margin-bottom: 20px;
+    text-align: left;
+  }
+  
+  /* Message Page Mobile Enhancements */
+  .message-page {
+    padding: 50px 0 70px;
+  }
+  
+  .message-page__grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  
+  .message-page__profile {
+    display: flex;
     flex-direction: column;
     align-items: center;
+    text-align: center;
+    gap: 16px;
   }
   
+  .message-page__image {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0;
+  }
+  
+  .message-page__profile-info {
+    text-align: center;
+  }
+  
+  .message-page__name {
+    font-size: 20px;
+    margin-bottom: 4px;
+  }
+  
+  .message-page__title {
+    font-size: 14px;
+    margin-bottom: 12px;
+  }
+  
+  .message-page__credentials {
+    font-size: 12px;
+  }
+  
+  .message-page__credentials p {
+    margin-bottom: 4px;
+  }
+  
+  .message-page__content {
+    padding: 0;
+  }
+  
+  .message-page__header {
+    margin-bottom: 24px;
+    text-align: center;
+  }
+  
+  .message-page__main-title {
+    font-size: clamp(22px, 4vw, 28px);
+    margin-bottom: 12px;
+  }
+  
+  .message-page__subtitle {
+    font-size: 15px;
+  }
+  
+  .message-page__message {
+    font-size: 15px;
+    line-height: 1.7;
+    margin-bottom: 20px;
+  }
+  
+  .message-page__quote {
+    padding: 20px 16px;
+    margin: 24px 0;
+    border-radius: 8px;
+  }
+  
+  .message-page__quote-text {
+    font-size: 16px;
+    line-height: 1.6;
+  }
+  
+  .message-page__signature {
+    margin-top: 32px;
+    padding-top: 24px;
+    text-align: center;
+  }
+  
+  .message-page__signature-name {
+    font-size: 18px;
+  }
+  
+  .message-page__signature-title {
+    font-size: 13px;
+  }
+  
+  /* Heritage & Craftsmanship Mobile */
   .heritage-craftsmanship {
-    padding: 70px 0;
+    padding: 60px 0;
+  }
+  
+  .heritage-craftsmanship__header {
+    margin-bottom: 40px;
   }
   
   .heritage-craftsmanship__grid {
     grid-template-columns: 1fr;
-    gap: 24px;
-  }
-  
-  .legacy-cta {
-    padding: 70px 0;
-  }
-  
-  .message-page {
-    padding: 60px 0 80px;
-  }
-  
-  .message-page__profile {
-    grid-template-columns: 1fr;
-    text-align: center;
-  }
-  
-  .message-page__image {
-    max-width: 200px;
-    margin: 0 auto;
-  }
-}
-
-@media (max-width: 480px) {
-  .janaki-legacy-page__image-wrapper--mobile {
-    max-width: 280px;
-    margin: 24px auto;
-  }
-  
-  .janaki-legacy-page__features {
-    padding: 20px;
-    margin: 32px 0;
+    gap: 20px;
   }
   
   .craft-card {
     padding: 24px 20px;
+  }
+  
+  /* Legacy CTA Mobile */
+  .legacy-cta {
+    padding: 60px 0;
+  }
+  
+  .legacy-cta__content {
+    padding: 0 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Ultra-Mobile Optimizations */
+  .page-hero {
+    padding: 80px 0 40px;
+  }
+  
+  .page-hero__content {
+    padding: 0 12px;
+  }
+  
+  .page-hero__title {
+    font-size: clamp(20px, 5vw, 28px);
+    line-height: 1.1;
+  }
+  
+  .page-hero__subtitle {
+    font-size: 14px;
+    line-height: 1.3;
+  }
+  
+  /* Container padding adjustments */
+  .container {
+    padding-inline: 12px;
+  }
+  
+  /* Janaki Legacy Ultra-Mobile */
+  .janaki-legacy-page {
+    padding: 40px 0 60px;
+  }
+  
+  .janaki-legacy-page__image-wrapper--mobile {
+    max-width: 240px;
+    margin: 16px auto;
+  }
+  
+  .janaki-legacy-page__header {
+    margin-bottom: 20px;
+  }
+  
+  .janaki-legacy-page__title {
+    font-size: clamp(20px, 4.5vw, 26px);
+    margin-bottom: 12px;
+  }
+  
+  .janaki-legacy-page__description {
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 16px;
+  }
+  
+  /* Message Page Ultra-Mobile */
+  .message-page {
+    padding: 40px 0 60px;
+  }
+  
+  .message-page__grid {
+    gap: 24px;
+  }
+  
+  .message-page__image {
+    width: 120px;
+    height: 120px;
+  }
+  
+  .message-page__name {
+    font-size: 18px;
+  }
+  
+  .message-page__credentials {
+    font-size: 11px;
+  }
+  
+  .message-page__main-title {
+    font-size: clamp(18px, 3.5vw, 24px);
+  }
+  
+  .message-page__subtitle {
+    font-size: 14px;
+  }
+  
+  .message-page__message {
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 18px;
+  }
+  
+  .message-page__quote {
+    padding: 16px 12px;
+    margin: 20px 0;
+  }
+  
+  .message-page__quote-text {
+    font-size: 15px;
+  }
+  
+  .message-page__signature {
+    margin-top: 24px;
+    padding-top: 20px;
+  }
+  
+  .message-page__signature-name {
+    font-size: 16px;
+  }
+  
+  .message-page__signature-title {
+    font-size: 12px;
+  }
+  
+  /* Heritage Milestones Ultra-Mobile */
+  .heritage-milestones {
+    padding: 50px 0;
+  }
+  
+  .heritage-milestones__header {
+    margin-bottom: 32px;
+  }
+  
+  .heritage-milestones__eyebrow {
+    font-size: 10px;
+    padding: 6px 12px;
+  }
+  
+  .heritage-milestones__title {
+    font-size: clamp(20px, 4vw, 26px);
+  }
+  
+  .heritage-milestones__subtitle {
+    font-size: 14px;
+  }
+  
+  .milestone-card {
+    grid-template-columns: 50px 1fr;
+    gap: 16px;
+  }
+  
+  .milestone-card__year {
+    font-size: 16px;
+    writing-mode: vertical-lr;
+    text-orientation: mixed;
+    padding-right: 6px;
+  }
+  
+  .milestone-card__content {
+    padding: 14px 12px;
+  }
+  
+  .milestone-card__title {
+    font-size: 16px;
+    margin-bottom: 6px;
+  }
+  
+  .milestone-card__desc {
+    font-size: 13px;
+    line-height: 1.5;
+  }
+  
+  /* Heritage Craftsmanship Ultra-Mobile */
+  .heritage-craftsmanship {
+    padding: 50px 0;
+  }
+  
+  .craft-card {
+    padding: 20px 16px;
+  }
+  
+  .craft-card__title {
+    font-size: 16px;
+  }
+  
+  .craft-card__desc {
+    font-size: 13px;
+  }
+  
+  /* Touch-friendly adjustments */
+  .btn {
+    min-height: 48px;
+    padding: 0 16px;
+    font-size: 14px;
+  }
+  
+  /* Breadcrumb Ultra-Mobile */
+  .breadcrumb__item {
+    font-size: 11px;
+  }
+  
+  /* Legacy CTA Ultra-Mobile */
+  .legacy-cta {
+    padding: 50px 0;
+  }
+  
+  .legacy-cta__title {
+    font-size: clamp(18px, 4vw, 24px);
+  }
+  
+  .legacy-cta__subtitle {
+    font-size: 13px;
   }
 }
 
@@ -4034,6 +4414,68 @@ site-header::before{content:"";position:absolute;inset:0;pointer-events:none;bac
   
   .btn:active {
     transform: scale(0.96);
+  }
+  
+  /* Remove hover effects on touch devices for better performance */
+  .collection-card:hover,
+  .feature-card:hover,
+  .milestone-card:hover .milestone-card__content {
+    transform: none;
+  }
+}
+
+/* Mobile Performance Optimizations */
+@media (max-width: 768px) {
+  /* Reduce animations for better mobile performance */
+  .janaki-legacy-page,
+  .message-page,
+  .heritage-milestones {
+    animation: none;
+  }
+  
+  /* Improve touch targets */
+  a, button, [role="button"] {
+    min-height: 44px;
+    min-width: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* Better focus visibility on mobile */
+  *:focus-visible {
+    outline: 3px solid var(--clr-accent);
+    outline-offset: 2px;
+  }
+  
+  /* Prevent horizontal scrolling */
+  body {
+    overflow-x: hidden;
+  }
+  
+  /* Improve text readability */
+  .message-page__text,
+  .janaki-legacy-page__text {
+    max-width: 100%;
+    text-align: left;
+  }
+}
+
+/* Accessibility: Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  
+  .feature-card,
+  .collection-card,
+  .milestone-card {
+    transform: none !important;
   }
 }
 
