@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>Our Premium Services — Swastik Interiors</title>
+	<meta name="description" content="Discover Swastik Interiors' premium interior design services, custom furniture solutions, space planning, and complete home transformation packages." />
+	<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+	<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+	<header class="site-header" role="banner" aria-label="Primary">
+		<div class="container site-header__bar">
+			<a class="brand" href="index.html" aria-label="Swastik Home">
+				<span class="brand__name">Swastik</span>
+			</a>
+			<nav class="nav" role="navigation" aria-label="Main menu">
+				<button class="nav__toggle" aria-expanded="false" aria-controls="nav-list">
+					<span class="nav__toggle-bar" aria-hidden="true"></span>
+					<span class="nav__toggle-bar" aria-hidden="true"></span>
+					<span class="nav__toggle-bar" aria-hidden="true"></span>
+					<span class="sr-only">Toggle menu</span>
+				</button>
+				<ul id="nav-list" class="nav__list">
+					<li><a class="nav__link" href="index.html" data-section=".hero">Home</a></li>
+					<li class="nav__item nav__item--has-submenu nav__item--about-us">
+						<button class="nav__link nav__link--toggle" aria-haspopup="true" aria-expanded="false">About Us</button>
+						<ul class="submenu" role="menu" aria-label="About us">
+							<li role="none"><a role="menuitem" class="submenu__link" href="janaki-legacy.html" data-section=".janaki-legacy">Janaki Legacy</a></li>
+							<li role="none"><a role="menuitem" class="submenu__link" href="message-from-chairman.html">Message from Chairman</a></li>
+							<li role="none"><a role="menuitem" class="submenu__link" href="message-from-md.html">Message from MD</a></li>
+						</ul>
+					</li>
+					<li><a class="nav__link" href="portfolio.html">Portfolio</a></li>
+					<li class="nav__item nav__item--has-submenu nav__item--services">
+						<button class="nav__link nav__link--toggle is-current" aria-haspopup="true" aria-expanded="false">Our Services</button>
+						<ul class="submenu" role="menu" aria-label="Our services">
+							<li role="none"><a role="menuitem" class="submenu__link" href="services.html">Services</a></li>
+							<li role="none"><a role="menuitem" class="submenu__link" href="products.html">Products</a></li>
+						</ul>
+					</li>
+					<li><a class="nav__link" href="contact.html">Contact Us</a></li>
+				</ul>
+			</nav>
+			<div class="header-cta">
+				<a href="contact.html" class="btn btn--quote" role="button" aria-label="Get Quote">Get Quote</a>
+			</div>
+		</div>
+	</header>
+
+	<main id="main" role="main">
+		<!-- Hero Section -->
+		<section class="portfolio-hero-modern page-hero--services" aria-labelledby="services-hero-title">
+			<div class="portfolio-hero-modern__background">
+				<img src="assets/services.png" alt="Our Premium Services" class="portfolio-hero__bg-img">
+				<div class="portfolio-hero-modern__gradient"></div>
+			</div>
+			<div class="container portfolio-hero__content">
+				<div class="portfolio-hero-modern__text">
+					<span class="portfolio-hero__eyebrow">Premium Design Solutions</span>
+					<h1 id="services-hero-title" class="portfolio-hero-modern__title">Transform Your Space into a Masterpiece</h1>
+					<p class="portfolio-hero-modern__subtitle">From concept to completion, we deliver exceptional interior design services, custom furniture solutions, and comprehensive space transformations that reflect your unique style and enhance your lifestyle.</p>
+				</div>
+				<div class="portfolio-hero-modern__actions pull-up-buttons">
+					<a href="#services-overview" class="btn btn--primary">Explore Our Services</a>
+					<a href="#consultation" class="btn btn--light">Free Consultation</a>
+				</div>
+				<div class="portfolio-hero-modern__stats">
+					<div class="hero-stat">
+						<div class="hero-stat__number">2,500+</div>
+						<div class="hero-stat__label">Happy Clients</div>
+					</div>
+					<div class="hero-stat">
+						<div class="hero-stat__number">15+</div>
+						<div class="hero-stat__label">Years Experience</div>
+					</div>
+					<div class="hero-stat">
+						<div class="hero-stat__number">98%</div>
+						<div class="hero-stat__label">Satisfaction Rate</div>
+					</div>
+					<div class="hero-stat">
+						<div class="hero-stat__number">4.9</div>
+						<div class="hero-stat__label">Average Rating</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Services Overview Section -->
+		<section id="services-overview" class="services-overview" aria-labelledby="services-title">
+			<div class="container">
+				<header class="services-overview__header">
+					<span class="services-overview__eyebrow">What We Offer</span>
+					<h2 id="services-title" class="services-overview__title">Comprehensive Interior Solutions</h2>
+					<p class="services-overview__subtitle">From initial consultation to final installation, we provide end-to-end interior design services that transform your vision into reality with exceptional craftsmanship and attention to detail.</p>
+				</header>
+				
+				<div class="services-grid">
+					<article class="service-card service-card--featured" data-service="interior-design">
+						<div class="service-card__background"></div>
+						<div class="service-card__icon">
+							<svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+								<path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+							</svg>
+						</div>
+						<div class="service-card__content">
+							<h3 class="service-card__title">Complete Interior Design</h3>
+							<p class="service-card__description">Full-service interior design from concept to completion, including space planning, color schemes, furniture selection, and styling.</p>
+							<div class="service-card__features">
+								<span class="service-feature">3D Visualization</span>
+								<span class="service-feature">Space Planning</span>
+								<span class="service-feature">Mood Boards</span>
+							</div>
+							<div class="service-card__price">Starting from <span class="price">Rs. 2,50,000</span></div>
+						</div>
+					</article>
+					
+					<article class="service-card" data-service="custom-furniture">
+						<div class="service-card__background"></div>
+						<div class="service-card__icon">
+							<svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+								<path d="M20 10V7c0-1.1-.9-2-2-2H6c-1.1 0-2 .9-2 2v3H3v2h1v4c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-4h1v-2h-1zM6 7h12v3H6V7z"/>
+							</svg>
+						</div>
+						<div class="service-card__content">
+							<h3 class="service-card__title">Custom Furniture Design</h3>
+							<p class="service-card__description">Bespoke furniture pieces crafted to your exact specifications using premium materials and traditional craftsmanship techniques.</p>
+							<div class="service-card__features">
+								<span class="service-feature">Solid Wood</span>
+								<span class="service-feature">Custom Sizing</span>
+								<span class="service-feature">Premium Finishes</span>
+							</div>
+							<div class="service-card__price">Starting from <span class="price">Rs. 75,000</span></div>
+						</div>
+					</article>
+					
+					<article class="service-card" data-service="space-planning">
+						<div class="service-card__background"></div>
+						<div class="service-card__icon">
+							<svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+								<path d="M3 3v18h18V3H3zm16 16H5V5h14v14zM6 7h5v3H6V7zm6 0h5v3h-5V7zM6 11h5v3H6v-3zm6 0h5v3h-5v-3zM6 15h11v2H6v-2z"/>
+							</svg>
+						</div>
+						<div class="service-card__content">
+							<h3 class="service-card__title">Space Planning & Layout</h3>
+							<p class="service-card__description">Optimize your space with intelligent layout solutions that maximize functionality while maintaining aesthetic appeal.</p>
+							<div class="service-card__features">
+								<span class="service-feature">Floor Plans</span>
+								<span class="service-feature">Traffic Flow</span>
+								<span class="service-feature">Storage Solutions</span>
+							</div>
+							<div class="service-card__price">Starting from <span class="price">Rs. 50,000</span></div>
+						</div>
+					</article>
+					
+					<article class="service-card" data-service="consultation">
+						<div class="service-card__background"></div>
+						<div class="service-card__icon">
+							<svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+								<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+							</svg>
+						</div>
+						<div class="service-card__content">
+							<h3 class="service-card__title">Design Consultation</h3>
+							<p class="service-card__description">Expert consultation to understand your needs, preferences, and budget to create a personalized design strategy.</p>
+							<div class="service-card__features">
+								<span class="service-feature">Needs Assessment</span>
+								<span class="service-feature">Style Guide</span>
+								<span class="service-feature">Budget Planning</span>
+							</div>
+							<div class="service-card__price">Starting from <span class="price">Rs. 15,000</span></div>
+						</div>
+					</article>
+					
+					<article class="service-card" data-service="renovation">
+						<div class="service-card__background"></div>
+						<div class="service-card__icon">
+							<svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+								<path d="M13.363 2.645l1.414 1.414-8.485 8.485-1.414-1.414 8.485-8.485zm7.071 0l1.414 1.414L12.363 13.544l-1.414-1.414L20.434 2.645zM7.05 14.456l1.414 1.414-5.657 5.657-1.414-1.414 5.657-5.657z"/>
+							</svg>
+						</div>
+						<div class="service-card__content">
+							<h3 class="service-card__title">Home Renovation</h3>
+							<p class="service-card__description">Complete home renovation services including structural changes, flooring, painting, and comprehensive makeovers.</p>
+							<div class="service-card__features">
+								<span class="service-feature">Project Management</span>
+								<span class="service-feature">Quality Materials</span>
+								<span class="service-feature">Timely Completion</span>
+							</div>
+							<div class="service-card__price">Starting from <span class="price">Rs. 5,00,000</span></div>
+						</div>
+					</article>
+					
+					<article class="service-card" data-service="styling">
+						<div class="service-card__background"></div>
+						<div class="service-card__icon">
+							<svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+								<path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+							</svg>
+						</div>
+						<div class="service-card__content">
+							<h3 class="service-card__title">Home Styling & Decor</h3>
+							<p class="service-card__description">Add the perfect finishing touches with curated accessories, artwork, and decorative elements that complete your space.</p>
+							<div class="service-card__features">
+								<span class="service-feature">Accessories</span>
+								<span class="service-feature">Artwork</span>
+								<span class="service-feature">Lighting</span>
+							</div>
+							<div class="service-card__price">Starting from <span class="price">Rs. 25,000</span></div>
+						</div>
+					</article>
+				</div>
+			</div>
+		</section>
+		
+		<!-- Service Categories Section -->
+		<section class="service-categories" aria-labelledby="categories-title">
+			<div class="container">
+				<header class="service-categories__header">
+					<span class="service-categories__eyebrow">Specialized Expertise</span>
+					<h2 id="categories-title" class="service-categories__title">Service Categories</h2>
+					<p class="service-categories__subtitle">We specialize in different types of spaces, each requiring unique design approaches and expertise.</p>
+				</header>
+				
+				<div class="categories-grid">
+					<div class="category-card category-card--residential">
+						<div class="category-card__image">
+							<img src="assets/sofa.jpg" alt="Residential Interior Design" />
+							<div class="category-card__overlay"></div>
+						</div>
+						<div class="category-card__content">
+							<h3 class="category-card__title">Residential Design</h3>
+							<p class="category-card__description">Transform your home into a personal sanctuary with our residential interior design services.</p>
+							<ul class="category-card__services">
+								<li>Living Room Design</li>
+								<li>Bedroom Design</li>
+								<li>Kitchen Design</li>
+								<li>Bathroom Design</li>
+							</ul>
+							<div class="category-card__action">
+								<a href="contact.html#contact-form" class="btn btn--ghost">Learn More</a>
+							</div>
+						</div>
+					</div>
+					
+					<div class="category-card category-card--commercial">
+						<div class="category-card__image">
+							<img src="assets/office.jpg" alt="Commercial Interior Design" />
+							<div class="category-card__overlay"></div>
+						</div>
+						<div class="category-card__content">
+							<h3 class="category-card__title">Commercial Spaces</h3>
+							<p class="category-card__description">Create inspiring work environments that boost productivity and reflect your brand values.</p>
+							<ul class="category-card__services">
+								<li>Office Design</li>
+								<li>Retail Spaces</li>
+								<li>Restaurant Design</li>
+								<li>Hotel Interiors</li>
+							</ul>
+							<div class="category-card__action">
+								<a href="contact.html#contact-form" class="btn btn--ghost">Learn More</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Process Timeline -->
+		<section class="svc-process" aria-labelledby="process-title">
+			<div class="container">
+				<h2 id="process-title" class="svc-process__title">A Simple, Proven Process</h2>
+				<ol class="svc-steps">
+					<li class="svc-step"><span class="svc-step__num">01</span><div class="svc-step__content"><h4>Consult</h4><p>We capture needs, budget, and timelines in a focused session.</p></div></li>
+					<li class="svc-step"><span class="svc-step__num">02</span><div class="svc-step__content"><h4>Design</h4><p>Concepts, moodboards, and 3D previews to align on direction.</p></div></li>
+					<li class="svc-step"><span class="svc-step__num">03</span><div class="svc-step__content"><h4>Build</h4><p>Custom furniture and finishes produced to spec.</p></div></li>
+					<li class="svc-step"><span class="svc-step__num">04</span><div class="svc-step__content"><h4>Install</h4><p>White‑glove delivery and on‑site setup with quality checks.</p></div></li>
+				</ol>
+			</div>
+		</section>
+
+		<!-- CTA Band -->
+		<section class="svc-cta" aria-labelledby="svc-cta-title">
+			<div class="container svc-cta__wrap">
+				<h2 id="svc-cta-title" class="svc-cta__title">Ready to elevate your space?</h2>
+				<p class="svc-cta__sub">Book a free 30‑minute consultation with our design team.</p>
+				<a href="contact.html#contact-form" class="btn btn--primary btn--large">Book Consultation</a>
+			</div>
+		</section>
+	</main>
+
+	<footer class="site-footer">
+		<div class="container">
+			<!-- Footer Links -->
+			<div class="footer__links">
+				<div class="footer__brand-section">
+					<div class="brand--footer">
+						<h3 class="brand__name">Swastik Interiors</h3>
+					</div>
+					<p class="footer__brand-description">
+						Creating beautiful, functional spaces that reflect your unique style and enhance your daily living experience with premium interior design solutions.
+					</p>
+					
+					<!-- Social Links -->
+					<div class="footer__social">
+						<a href="https://www.facebook.com/profile.php?id=61580098524777" class="footer__social-link" aria-label="Facebook">
+							<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+								<path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+							</svg>
+						</a>
+						<a href="https://www.instagram.com/swastikinteriorbrt/" class="footer__social-link" aria-label="Instagram">
+							<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+								<path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.583-.07 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.057-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.059-1.281-.073-1.689-.073-4.948 0-3.259.014-3.668.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.012 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+							</svg>
+						</a>
+						<a href="https://www.tiktok.com/swastikinteriorbrt/" class="footer__social-link" aria-label="TikTok">
+							<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+								<path d="M12.53.02C13.84 0 15.14.01 16.44 0c.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/>
+							</svg>
+						</a>
+						<a href="https://www.pinterest.com/swastikinteriorbrt/" class="footer__social-link" aria-label="Pinterest">
+							<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+								<path d="M12 0C5.373 0 0 5.372 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738.098.119.112.224.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.631-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12 0-6.628-5.373-12-12-12z"/>
+							</svg>
+						</a>
+					</div>
+				</div>
+
+				<div class="footer__nav-columns">
+					<div class="footer__nav-column">
+						<h4 class="footer__nav-title">Company</h4>
+						<ul class="footer__nav-list">
+							<li><a href="janaki-legacy.html" class="footer__nav-link">Janaki Legacy</a></li>
+							<li><a href="message-from-chairman.html" class="footer__nav-link">Message from Chairman</a></li>
+							<li><a href="message-from-md.html" class="footer__nav-link">Message from MD</a></li>
+							<li><a href="index.html#testimonials" class="footer__nav-link">Testimonials</a></li>
+						</ul>
+					</div>
+
+					<div class="footer__nav-column">
+						<h4 class="footer__nav-title">Support</h4>
+						<ul class="footer__nav-list">
+							<li><a href="index.html#faq" class="footer__nav-link">FAQ</a></li>
+							<li><a href="contact.html#contact-form" class="footer__nav-link">Book Consultation</a></li>
+							<li><a href="contact.html" class="footer__nav-link">Feedback</a></li>
+						</ul>
+					</div>
+
+					<div class="footer__nav-column">
+						<h4 class="footer__nav-title">Services</h4>
+						<ul class="footer__nav-list">
+							<li><a href="#residential-design" class="footer__nav-link">Residential Design</a></li>
+							<li><a href="#commercial-spaces" class="footer__nav-link">Commercial Spaces</a></li>
+							<li><a href="#design-consultation" class="footer__nav-link">Design Consultation</a></li>
+							<li><a href="#home-renovation" class="footer__nav-link">Renovation</a></li>
+						</ul>
+					</div>
+
+					<div class="footer__nav-column">
+						<h4 class="footer__nav-title">Contact Us</h4>
+						<ul class="footer__contact-list">
+							<li class="footer__contact-item">
+								<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+									<path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+								</svg>
+								<span>(977) 98765 4321 54</span>
+							</li>
+							<li class="footer__contact-item">
+								<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+									<path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+									<polyline points="22,6 12,13 2,6"></polyline>
+								</svg>
+								<span>hello@swastikinteriors.com</span>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+
+			<!-- Footer Bottom -->
+			<div class="footer__bottom">
+				<div class="footer__bottom-content">
+					<p class="footer__copyright">
+						© Copyright by Swastik Interiors. All rights reserved.
+					</p>
+					
+					<div class="footer__legal-links">
+						<a href="privacy.html" class="footer__legal-link">Privacy Policy</a>
+						<a href="terms.html" class="footer__legal-link">Terms of Use</a>
+						<a href="legal.html" class="footer__legal-link">Legal</a>
+						<a href="sitemap.html" class="footer__legal-link">Site Map</a>
+					</div>
+					
+					<!-- Scroll to Top Button -->
+					<button class="scroll-to-top" aria-label="Scroll to top">
+						<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+							<path d="m18 15-6-6-6 6"/>
+						</svg>
+					</button>
+				</div>
+			</div>
+		</div>
+	</footer>
+
+	<script src="script.js"></script>
+	<style>
+		/* Services Page Styles */
+		
+		/* Services Overview Section */
+		.services-overview {
+			padding: 80px 0 100px;
+			background: #ffffff;
+		}
+		
+		.services-overview__header {
+			text-align: center;
+			margin-bottom: 60px;
+			max-width: 800px;
+			margin-left: auto;
+			margin-right: auto;
+		}
+		
+		.services-overview__eyebrow {
+			display: inline-block;
+			font-size: 13px;
+			font-weight: 600;
+			letter-spacing: 0.2em;
+			text-transform: uppercase;
+			color: var(--clr-accent);
+			margin-bottom: 16px;
+		}
+		
+		.services-overview__title {
+			font-family: var(--ff-serif);
+			font-size: clamp(32px, 4vw, 48px);
+			font-weight: 600;
+			color: #2a2a2a;
+			margin: 0 0 20px;
+			line-height: 1.2;
+		}
+		
+		.services-overview__subtitle {
+			font-size: 18px;
+			color: var(--clr-muted);
+			line-height: 1.6;
+			font-weight: 300;
+			margin: 0;
+		}
+		
+		/* Services Grid */
+		.services-grid {
+			display: grid;
+			grid-template-columns: repeat(3, 1fr);
+			gap: 32px;
+		}
+		
+		.service-card {
+			position: relative;
+			background: #fff;
+			border-radius: 20px;
+			padding: 32px 24px;
+			border: 1px solid rgba(122, 81, 48, 0.08);
+			box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.05);
+			transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+			cursor: pointer;
+			text-align: center;
+		}
+		
+		.service-card:hover {
+			transform: translateY(-8px);
+			box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12), 0 8px 24px rgba(0, 0, 0, 0.08);
+			border-color: rgba(122, 81, 48, 0.15);
+		}
+		
+		.service-card--featured {
+			border: 2px solid var(--clr-accent);
+			position: relative;
+		}
+		
+		.service-card--featured::before {
+			content: "Most Popular";
+			position: absolute;
+			top: -12px;
+			left: 50%;
+			transform: translateX(-50%);
+			background: var(--clr-accent);
+			color: white;
+			padding: 6px 16px;
+			border-radius: 20px;
+			font-size: 12px;
+			font-weight: 600;
+			text-transform: uppercase;
+			letter-spacing: 0.5px;
+		}
+		
+		.service-card__background {
+			position: absolute;
+			inset: 0;
+			background: linear-gradient(135deg, rgba(122,81,48,0.02) 0%, transparent 100%);
+			border-radius: inherit;
+			opacity: 0;
+			transition: opacity 0.3s ease;
+		}
+		
+		.service-card:hover .service-card__background {
+			opacity: 1;
+		}
+		
+		.service-card__icon {
+			width: 64px;
+			height: 64px;
+			margin: 0 auto 24px;
+			background: rgba(122, 81, 48, 0.1);
+			border-radius: 50%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			color: var(--clr-accent);
+			transition: all 0.3s ease;
+		}
+		
+		.service-card:hover .service-card__icon {
+			background: var(--clr-accent);
+			color: white;
+			transform: scale(1.1);
+		}
+		
+		.service-card__content {
+			position: relative;
+			z-index: 2;
+		}
+		
+		.service-card__title {
+			font-family: var(--ff-serif);
+			font-size: 22px;
+			font-weight: 600;
+			color: #2a2a2a;
+			margin: 0 0 16px;
+			line-height: 1.3;
+		}
+		
+		.service-card__description {
+			font-size: 15px;
+			color: var(--clr-muted);
+			line-height: 1.6;
+			margin: 0 0 24px;
+		}
+		
+		.service-card__features {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 8px;
+			justify-content: center;
+			margin-bottom: 24px;
+		}
+		
+		.service-feature {
+			font-size: 12px;
+			padding: 6px 12px;
+			background: rgba(122, 81, 48, 0.08);
+			color: var(--clr-accent);
+			border-radius: 20px;
+			font-weight: 500;
+			text-transform: uppercase;
+			letter-spacing: 0.5px;
+		}
+		
+		.service-card__price {
+			font-size: 14px;
+			color: var(--clr-muted);
+			margin-top: 16px;
+			padding-top: 16px;
+			border-top: 1px solid rgba(122, 81, 48, 0.1);
+		}
+		
+		.service-card__price .price {
+			font-size: 18px;
+			font-weight: 700;
+			color: var(--clr-accent);
+		}
+		
+		/* Service Categories */
+		.service-categories {
+			padding: 80px 0;
+			background: linear-gradient(135deg, #faf9f7 0%, #f6f5f3 100%);
+		}
+		
+		.service-categories__header {
+			text-align: center;
+			margin-bottom: 60px;
+		}
+		
+		.service-categories__eyebrow {
+			display: inline-block;
+			font-size: 13px;
+			font-weight: 600;
+			letter-spacing: 0.2em;
+			text-transform: uppercase;
+			color: var(--clr-accent);
+			margin-bottom: 16px;
+		}
+		
+		.service-categories__title {
+			font-family: var(--ff-serif);
+			font-size: clamp(32px, 4vw, 48px);
+			font-weight: 600;
+			color: #2a2a2a;
+			margin: 0 0 20px;
+			line-height: 1.2;
+		}
+		
+		.service-categories__subtitle {
+			font-size: 18px;
+			color: var(--clr-muted);
+			line-height: 1.6;
+			font-weight: 300;
+			max-width: 600px;
+			margin: 0 auto;
+		}
+		
+		.categories-grid {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			gap: 32px;
+			max-width: 1000px;
+			margin: 0 auto;
+		}
+		
+		.category-card {
+			background: #fff;
+			border-radius: 20px;
+			overflow: hidden;
+			box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+			transition: all 0.4s ease;
+			border: 1px solid rgba(122, 81, 48, 0.08);
+		}
+		
+		.category-card:hover {
+			transform: translateY(-8px);
+			box-shadow: 0 20px 48px rgba(0, 0, 0, 0.12);
+		}
+		
+		.category-card__image {
+			position: relative;
+			height: 200px;
+			overflow: hidden;
+		}
+		
+		.category-card__image img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			transition: transform 0.4s ease;
+		}
+		
+		.category-card:hover .category-card__image img {
+			transform: scale(1.05);
+		}
+		
+		.category-card__overlay {
+			position: absolute;
+			inset: 0;
+			background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.3) 100%);
+		}
+		
+		.category-card__content {
+			padding: 32px 24px;
+		}
+		
+		.category-card__title {
+			font-family: var(--ff-serif);
+			font-size: 24px;
+			font-weight: 600;
+			color: #2a2a2a;
+			margin: 0 0 16px;
+			line-height: 1.3;
+		}
+		
+		.category-card__description {
+			font-size: 15px;
+			color: var(--clr-muted);
+			line-height: 1.6;
+			margin: 0 0 24px;
+		}
+		
+		.category-card__services {
+			list-style: none;
+			padding: 0;
+			margin: 0 0 24px;
+		}
+		
+		.category-card__services li {
+			padding: 6px 0;
+			font-size: 14px;
+			color: var(--clr-muted);
+			position: relative;
+			padding-left: 20px;
+		}
+		
+		.category-card__services li::before {
+			content: "✓";
+			position: absolute;
+			left: 0;
+			color: var(--clr-accent);
+			font-weight: 600;
+		}
+		
+		/* Process Section */
+		.svc-process {
+			padding: 80px 0;
+			background: linear-gradient(135deg, #ffffff 0%, #fdfcfa 100%);
+		}
+		
+		.svc-process__title {
+			font-family: var(--ff-serif);
+			font-size: clamp(28px, 4vw, 40px);
+			font-weight: 600;
+			color: #2a2a2a;
+			text-align: center;
+			margin: 0 0 60px;
+		}
+		
+		.svc-steps {
+			list-style: none;
+			padding: 0;
+			margin: 0;
+			display: grid;
+			grid-template-columns: repeat(4, 1fr);
+			gap: 24px;
+		}
+		
+		.svc-step {
+			background: #fff;
+			border-radius: 20px;
+			padding: 32px 24px;
+			text-align: center;
+			box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+			border: 1px solid rgba(122, 81, 48, 0.08);
+			transition: all 0.3s ease;
+			position: relative;
+		}
+		
+		.svc-step:hover {
+			transform: translateY(-4px);
+			box-shadow: 0 16px 32px rgba(0, 0, 0, 0.08);
+		}
+		
+		.svc-step__num {
+			display: inline-block;
+			width: 48px;
+			height: 48px;
+			line-height: 48px;
+			background: var(--clr-accent);
+			color: white;
+			border-radius: 50%;
+			font-size: 18px;
+			font-weight: 700;
+			margin-bottom: 20px;
+		}
+		
+		.svc-step__content h4 {
+			font-family: var(--ff-serif);
+			font-size: 20px;
+			font-weight: 600;
+			color: #2a2a2a;
+			margin: 0 0 12px;
+		}
+		
+		.svc-step__content p {
+			font-size: 15px;
+			color: var(--clr-muted);
+			line-height: 1.6;
+			margin: 0;
+		}
+		
+		/* CTA Section */
+		.svc-cta {
+			padding: 80px 0;
+			background: linear-gradient(135deg, #faf9f7 0%, #f6f5f3 100%);
+		}
+		
+		.svc-cta__wrap {
+			background: linear-gradient(135deg, rgba(122,81,48,0.08) 0%, rgba(196,163,122,0.06) 100%);
+			border: 1px solid rgba(122, 81, 48, 0.15);
+			border-radius: 24px;
+			padding: 60px 40px;
+			text-align: center;
+			max-width: 800px;
+			margin: 0 auto;
+			box-shadow: 0 20px 40px rgba(122,81,48,0.08);
+		}
+		
+		.svc-cta__title {
+			font-family: var(--ff-serif);
+			font-size: clamp(28px, 4vw, 40px);
+			font-weight: 600;
+			color: #2a2a2a;
+			margin: 0 0 16px;
+			line-height: 1.2;
+		}
+		
+		.svc-cta__sub {
+			font-size: 18px;
+			color: var(--clr-muted);
+			line-height: 1.6;
+			margin: 0 0 32px;
+			max-width: 500px;
+			margin-left: auto;
+			margin-right: auto;
+			margin-bottom: 32px;
+		}
+		
+		.btn--large {
+			padding: 16px 32px;
+			font-size: 16px;
+			font-weight: 600;
+		}
+		
+		/* Animations */
+		@keyframes float {
+			0%, 100% { transform: translateY(0px) rotate(0deg); }
+			33% { transform: translateY(-10px) rotate(1deg); }
+			66% { transform: translateY(5px) rotate(-1deg); }
+		}
+		
+		/* Responsive Design */
+		@media (max-width: 1024px) {
+			.categories-grid {
+				grid-template-columns: 1fr;
+				gap: 24px;
+				max-width: 600px;
+			}
+			
+			.svc-steps {
+				grid-template-columns: repeat(2, 1fr);
+				gap: 20px;
+			}
+		}
+		
+		@media (max-width: 768px) {
+			.services-grid {
+				grid-template-columns: 1fr;
+				gap: 20px;
+			}
+			
+			.service-card {
+				padding: 24px 20px;
+			}
+			
+			.svc-steps {
+				grid-template-columns: 1fr;
+				gap: 16px;
+			}
+			
+			.svc-cta__wrap {
+				padding: 40px 24px;
+			}
+			
+			.category-card__content {
+				padding: 24px 20px;
+			}
+		}
+	</style>
+</body>
+</html>
+

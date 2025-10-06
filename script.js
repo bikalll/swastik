@@ -29,10 +29,12 @@ if (toggle && navList) {
     toggle.setAttribute('aria-expanded', String(open));
     navList.classList.toggle('is-open', open);
   };
+  
   toggle.addEventListener('click', () => {
     const open = toggle.getAttribute('aria-expanded') !== 'true';
     setState(open);
   });
+  
   toggle.addEventListener('keydown', (e) => {
     if (e.key === 'Enter' || e.key === ' ') {
       e.preventDefault();
@@ -40,8 +42,11 @@ if (toggle && navList) {
       setState(open);
     }
   });
+  
   document.addEventListener('click', (e) => {
-    if (!navList.contains(e.target) && !toggle.contains(e.target)) setState(false);
+    if (!navList.contains(e.target) && !toggle.contains(e.target)) {
+      setState(false);
+    }
   });
 }
 
@@ -58,19 +63,30 @@ submenuItems.forEach((submenuItem) => {
     
     // Click/tap toggle
     toggle.addEventListener('click', (e) => {
-      // If desktop, let hover handle it; only toggle when mobile menu is open
-      const isMobileMenu = navList && navList.classList.contains('is-open');
-      if (!isMobileMenu) return; // desktop handled via CSS hover
-      e.preventDefault();
-      const open = toggle.getAttribute('aria-expanded') !== 'true';
-      setExpanded(open);
+      // Check if we're on mobile by checking if the nav list is visible/active
+      const isMobile = window.innerWidth <= 768;
+      const isMobileMenuOpen = navList && navList.classList.contains('is-open');
+      
+      // On mobile, always toggle the submenu when the toggle is clicked
+      // On desktop, let CSS hover handle it
+      if (isMobile && isMobileMenuOpen) {
+        e.preventDefault();
+        const open = toggle.getAttribute('aria-expanded') !== 'true';
+        setExpanded(open);
+      } else if (!isMobile) {
+        // On desktop, let hover handle it (no action needed here)
+        return;
+      }
     });
     
     // Close submenu when clicking outside in mobile
     document.addEventListener('click', (e) => {
-      const isMobileMenu = navList && navList.classList.contains('is-open');
-      if (!isMobileMenu) return;
-      if (!submenuItem.contains(e.target)) setExpanded(false);
+      const isMobile = window.innerWidth <= 768;
+      const isMobileMenuOpen = navList && navList.classList.contains('is-open');
+      
+      if (isMobile && isMobileMenuOpen && !submenuItem.contains(e.target)) {
+        setExpanded(false);
+      }
     });
   }
 });
@@ -876,16 +892,8 @@ function initSocialLinks() {
   const socialLinks = document.querySelectorAll('.footer__social-link');
   
   socialLinks.forEach(link => {
-    link.addEventListener('click', function(e) {
-      // For demo purposes - in real site these would link to actual social profiles
-      e.preventDefault();
-      
-      const platform = this.getAttribute('href')?.split('/').pop() || 'social media';
-      console.log(`Opening ${platform} page`);
-      
-      // Simple feedback
-      showSimpleToast(`Opening ${platform} page...`);
-    });
+    // Remove the click event listener that was preventing default behavior
+    // The links will now work normally without any JavaScript interference
   });
 }
 
@@ -921,21 +929,198 @@ function showSimpleToast(message) {
   }, 2000);
 }
 
-// Initialize features animations when DOM is loaded
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', () => {
-    addRippleAnimation();
-    observeElements();
-    enhanceCardInteractions();
-    observeLegacy();
-    observeCollections();
-    observeTestimonials();
-    initTestimonials();
-    initFAQ();
-    initArrowKeyNavigation();
-    initFooterFeatures();
+// ===================================
+// INFINITE SLIDER SYSTEM
+// ===================================
+
+// Sample slide data for each slider section with actual logo content
+const sliderData = [
+  {
+    section: 'top-companies',
+    slides: [
+      { logo: 'assets/logos/top/pathao.png', alt: 'Pathao Nepal' },
+      { logo: 'assets/logos/top/himalayanbank.png', alt: 'Himalayan Bank Limited' },
+      { logo: 'assets/logos/top/asian.png', alt: 'Asian Thai Foods' },
+      { logo: 'assets/logos/top/himalayanlife.png', alt: 'Himalayan Life Insurance' },
+      { logo: 'assets/logos/top/neco.png', alt: 'Neco Insurance Company' },
+      { logo: 'assets/logos/top/biratnagarfc.png', alt: 'Biratnagar City FC' },
+      { logo: 'assets/logos/aurora.svg', alt: 'Aurora' },
+      { logo: 'assets/logos/vertex.svg', alt: 'Vertex' }
+    ]
+  },
+  {
+    section: 'genre-one',
+    slides: [
+      { logo: 'assets/hospitality.jpg', alt: 'Hospitality Project 1' },
+      { logo: 'assets/commercial.jpg', alt: 'Hospitality Project 2' },
+      { logo: 'assets/residential.jpg', alt: 'Hospitality Project 3' },
+      { logo: 'assets/retail.jpg', alt: 'Hospitality Project 4' },
+      { logo: 'assets/office.jpg', alt: 'Hospitality Project 5' }
+    ]
+  },
+  {
+    section: 'genre-two',
+    slides: [
+      { logo: 'assets/logos/top/himalayanbank.png', alt: 'Banking Project 1' },
+      { logo: 'assets/logos/top/neco.png', alt: 'Banking Project 2' },
+      { logo: 'assets/logos/top/himalayanlife.png', alt: 'Banking Project 3' },
+      { logo: 'assets/logos/aurora.svg', alt: 'Banking Project 4' },
+      { logo: 'assets/logos/vertex.svg', alt: 'Banking Project 5' }
+    ]
+  },
+  {
+    section: 'genre-three',
+    slides: [
+      { logo: 'assets/project1.jpg', alt: 'Education Project 1' },
+      { logo: 'assets/project2.jpg', alt: 'Education Project 2' },
+      { logo: 'assets/project3.jpg', alt: 'Education Project 3' },
+      { logo: 'assets/dining.jpg', alt: 'Education Project 4' },
+      { logo: 'assets/sofa.jpg', alt: 'Education Project 5' }
+    ]
+  }
+];
+
+// Initialize all sliders
+function initInfiniteSliders() {
+  console.log('Initializing infinite sliders');
+  
+  // Only initialize sliders on the portfolio page
+  if (!document.querySelector('.portfolio-slider-section')) {
+    console.log('Not on portfolio page, skipping slider initialization');
+    return;
+  }
+  
+  console.log('On portfolio page, initializing sliders');
+  
+  // Find all slider containers
+  const sliders = document.querySelectorAll('.slider');
+  console.log('Found', sliders.length, 'sliders');
+  
+  // Process each slider
+  sliders.forEach((slider, index) => {
+    console.log('Processing slider', index);
+    const slideTrack = slider.querySelector('.slide-track');
+    if (!slideTrack) {
+      console.log('No slide-track found for slider', index);
+      return;
+    }
+    
+    // Get slide data for this slider
+    const data = sliderData[index];
+    if (!data) {
+      console.log('No data found for slider', index);
+      return;
+    }
+    
+    console.log('Generating slides for slider', index, 'with', data.slides.length, 'slides');
+    // Generate slides
+    generateSlides(slideTrack, data.slides);
   });
-} else {
+}
+
+// Generate slides and duplicates for seamless looping
+function generateSlides(slideTrack, slides) {
+  console.log('Generating', slides.length, 'slides');
+  
+  // Clear existing content
+  slideTrack.innerHTML = '';
+  
+  // Create original slides
+  slides.forEach((slide, slideIndex) => {
+    console.log('Creating slide', slideIndex, 'with logo:', slide.logo);
+    const slideElement = createSlide(slide);
+    slideTrack.appendChild(slideElement);
+  });
+  
+  // Create duplicate slides for seamless looping
+  slides.forEach((slide, slideIndex) => {
+    console.log('Creating duplicate slide', slideIndex, 'with logo:', slide.logo);
+    const slideElement = createSlide(slide);
+    slideTrack.appendChild(slideElement);
+  });
+  
+  console.log('Total slides in track:', slideTrack.children.length);
+}
+
+// Create a single slide element with logo content
+function createSlide(slideData) {
+  const slide = document.createElement('div');
+  slide.className = 'slide';
+  
+  const content = document.createElement('div');
+  content.className = 'slide-content';
+  
+  const logo = document.createElement('img');
+  logo.className = 'slide-logo';
+  logo.src = slideData.logo;
+  logo.alt = slideData.alt;
+  
+  // Add error handling for missing images
+  logo.onerror = function() {
+    console.log('Failed to load image:', slideData.logo);
+    // Set a placeholder or fallback
+    logo.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iI2NjYyIvPjx0ZXh0IHg9IjUwIiB5PSI1NSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjEyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjNjY2Ij5Mb2dvPC90ZXh0Pjwvc3ZnPg==';
+    logo.alt = slideData.alt + ' (placeholder)';
+  };
+  
+  // Add load event for debugging
+  logo.onload = function() {
+    console.log('Successfully loaded image:', slideData.logo);
+  };
+  
+  content.appendChild(logo);
+  slide.appendChild(content);
+  
+  return slide;
+}
+
+// Initialize animations for About Us pages
+function initAboutPageAnimations() {
+  // Check if we're on an About Us page
+  const isAboutPage = document.querySelector('.janaki-legacy-page, .message-page, .heritage-milestones');
+  if (!isAboutPage) return;
+
+  // Simple hover effects for cards
+  const aboutCards = document.querySelectorAll('.about-card');
+  aboutCards.forEach(card => {
+    card.addEventListener('mouseenter', () => {
+      // Add subtle animation effect
+      card.style.transform = 'translateY(-8px)';
+      card.style.boxShadow = '0 20px 40px rgba(0, 0, 0, 0.12)';
+    });
+    
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = '';
+      card.style.boxShadow = '';
+    });
+  });
+
+  // Simple hover effects for images
+  const imageContainers = document.querySelectorAll('.about-image-container, .janaki-legacy-page__image-container');
+  imageContainers.forEach(container => {
+    const image = container.querySelector('.about-image, .janaki-legacy-page__image');
+    const overlay = container.querySelector('.about-image-overlay, .janaki-legacy-page__image-overlay');
+    
+    if (image) {
+      container.addEventListener('mouseenter', () => {
+        image.style.transform = 'scale(1.05)';
+        if (overlay) {
+          overlay.style.opacity = '1';
+        }
+      });
+      
+      container.addEventListener('mouseleave', () => {
+        image.style.transform = 'scale(1)';
+        if (overlay) {
+          overlay.style.opacity = '0';
+        }
+      });
+    }
+  });
+}
+
+// Update the initAllFeatures function to include the new animation initialization
+function initAllFeatures() {
   addRippleAnimation();
   observeElements();
   enhanceCardInteractions();
@@ -946,5 +1131,16 @@ if (document.readyState === 'loading') {
   initFAQ();
   initArrowKeyNavigation();
   initFooterFeatures();
+  initContactPageFeatures();
+  addContactPageStyles();
+  initInfiniteSliders();
+  initAboutPageAnimations();
+}
+
+// Initialize all features when DOM is ready
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initAllFeatures);
+} else {
+  initAllFeatures();
 }
 

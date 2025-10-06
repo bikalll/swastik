@@ -1,0 +1,10 @@
+<svg width="180" height="80" viewBox="0 0 180 80" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Aurora logo">
+  <rect width="180" height="80" fill="none"/>
+  <linearGradient id="g" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0" stop-color="#26A69A"/>
+    <stop offset="1" stop-color="#4DB6AC"/>
+  </linearGradient>
+  <path d="M12 52c8-20 16-20 24 0s16 20 24 0" fill="none" stroke="url(#g)" stroke-width="6" stroke-linecap="round"/>
+  <text x="70" y="48" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" fill="#1a1a1a">AURORA</text>
+</svg>
+

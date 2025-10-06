@@ -1,0 +1,6 @@
+<svg width="180" height="80" viewBox="0 0 180 80" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Acme logo">
+  <rect width="180" height="80" fill="none"/>
+  <circle cx="36" cy="40" r="24" fill="#E53935"/>
+  <text x="70" y="48" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="700" fill="#1a1a1a">ACME</text>
+</svg>
+

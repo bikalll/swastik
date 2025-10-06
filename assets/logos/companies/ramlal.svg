@@ -1,0 +1,7 @@
+<svg width="180" height="80" viewBox="0 0 180 80" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Orbit logo">
+  <rect width="180" height="80" fill="none"/>
+  <circle cx="36" cy="40" r="22" fill="#43A047"/>
+  <circle cx="36" cy="40" r="28" fill="none" stroke="#43A047" stroke-width="4" opacity="0.35"/>
+  <text x="70" y="48" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" fill="#1a1a1a">ORBIT</text>
+</svg>
+

@@ -1,0 +1,7 @@
+<svg width="180" height="80" viewBox="0 0 180 80" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Horizon logo">
+  <rect width="180" height="80" fill="none"/>
+  <path d="M12 48c8-16 40-16 48 0" fill="none" stroke="#FB8C00" stroke-width="6" stroke-linecap="round"/>
+  <circle cx="36" cy="40" r="6" fill="#FB8C00"/>
+  <text x="70" y="48" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" fill="#1a1a1a">HORIZON</text>
+</svg>
+
