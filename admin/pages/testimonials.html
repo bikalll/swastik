@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testimonials Manager - Swastik CMS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/admin.css">
+</head>
+
+<body class="admin-page">
+    <div class="admin-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <h2 class="sidebar-brand">Swastik CMS</h2>
+            </div>
+            <nav class="sidebar-nav">
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="../index.html" class="nav-link"><span>Dashboard</span></a></li>
+                    <li class="nav-item"><a href="hero.html" class="nav-link"><span>Hero Sections</span></a></li>
+                    <li class="nav-item"><a href="products.html" class="nav-link"><span>Products</span></a></li>
+                    <li class="nav-item"><a href="collections.html" class="nav-link"><span>Collections</span></a></li>
+                    <li class="nav-item"><a href="testimonials.html"
+                            class="nav-link active"><span>Testimonials</span></a></li>
+                    <li class="nav-item"><a href="services.html" class="nav-link"><span>Services</span></a></li>
+                    <li class="nav-item"><a href="faqs.html" class="nav-link"><span>FAQs</span></a></li>
+                    <li class="nav-item"><a href="partners.html" class="nav-link"><span>Partners</span></a></li>
+                    <li class="nav-item"><a href="settings.html" class="nav-link"><span>Site Settings</span></a></li>
+                </ul>
+            </nav>
+            <div class="sidebar-footer">
+                <button id="logout-btn" class="btn btn-ghost btn-full"><span>Logout</span></button>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="topbar">
+                <div class="topbar-left">
+                    <h1 class="page-title">Testimonials</h1>
+                </div>
+                <div class="topbar-right">
+                    <button class="btn btn-primary" id="add-btn">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <line x1="12" y1="5" x2="12" y2="19" />
+                            <line x1="5" y1="12" x2="19" y2="12" />
+                        </svg>
+                        Add Testimonial
+                    </button>
+                </div>
+            </header>
+
+            <div class="content-area">
+                <div class="card">
+                    <div class="card-body" style="padding: 0;">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th style="width: 60px;">Avatar</th>
+                                    <th>Name</th>
+                                    <th>Title</th>
+                                    <th>Location</th>
+                                    <th>Rating</th>
+                                    <th>Featured</th>
+                                    <th>Status</th>
+                                    <th style="width: 120px;">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="table-body">
+                                <tr>
+                                    <td colspan="8" style="text-align: center; padding: 40px;">Loading...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal-overlay" id="modal">
+        <div class="modal" style="max-width: 600px;">
+            <div class="modal-header">
+                <h3 class="modal-title" id="modal-title">Add Testimonial</h3>
+                <button class="modal-close">×</button>
+            </div>
+            <div class="modal-body">
+                <form id="item-form">
+                    <input type="hidden" id="item-id">
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name">Customer Name *</label>
+                            <input type="text" id="name" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="title">Title/Designation</label>
+                            <input type="text" id="title" class="form-control" placeholder="e.g., Interior Designer">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="location">Location</label>
+                            <input type="text" id="location" class="form-control" placeholder="e.g., Kathmandu">
+                        </div>
+                        <div class="form-group">
+                            <label for="rating">Rating (1-5)</label>
+                            <select id="rating" class="form-control">
+                                <option value="5">5 Stars</option>
+                                <option value="4">4 Stars</option>
+                                <option value="3">3 Stars</option>
+                                <option value="2">2 Stars</option>
+                                <option value="1">1 Star</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="rating-text">Rating Text</label>
+                        <input type="text" id="rating-text" class="form-control"
+                            placeholder="e.g., High Quality, Perfect Design">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="quote">Testimonial Quote *</label>
+                        <textarea id="quote" class="form-control" rows="4" required
+                            placeholder="What the customer said about your service..."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="avatar-url">Avatar Image</label>
+                        <div style="display: flex; gap: 8px; align-items: center; margin-bottom: 8px;">
+                            <div style="flex: 1;">
+                                <input type="text" id="avatar-url" class="form-control"
+                                    placeholder="Paste image URL or upload below...">
+                            </div>
+                            <div id="avatar-preview"
+                                style="width: 48px; height: 48px; border-radius: 50%; overflow: hidden; border: 2px solid #e2e8f0; display: none; flex-shrink: 0;">
+                                <img id="avatar-preview-img" src="" alt="Preview"
+                                    style="width: 100%; height: 100%; object-fit: cover;">
+                            </div>
+                        </div>
+                        <div style="position: relative;">
+                            <input type="file" id="avatar-file" accept="image/*" style="display: none;">
+                            <button type="button" id="avatar-upload-btn" class="btn btn-outline"
+                                style="width: 100%; border-style: dashed; padding: 12px; font-size: 13px;">
+                                📷 Click to upload avatar image
+                            </button>
+                            <div id="avatar-upload-status"
+                                style="display: none; padding: 8px 0; font-size: 13px; color: #6c757d;"></div>
+                        </div>
+                        <small style="color: #6c757d; font-size: 12px; margin-top: 4px; display: block;">Upload an image
+                            or paste a URL (e.g. from Unsplash)</small>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="display-order">Display Order</label>
+                            <input type="number" id="display-order" class="form-control" value="0" min="0">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                                <input type="checkbox" id="is-featured"> Featured Testimonial
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                                <input type="checkbox" id="is-active" checked> Active
+                            </label>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline" id="cancel-btn">Cancel</button>
+                <button type="submit" form="item-form" class="btn btn-primary">Save</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../../js/supabase-config.js"></script>
+    <script src="../js/admin-auth.js"></script>
+    <script src="../js/admin-app.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            const app = window.adminApp;
+            const client = window.SupabaseConfig?.getClient();
+            if (!client) return;
+
+            const modal = document.getElementById('modal');
+            const form = document.getElementById('item-form');
+            const tableBody = document.getElementById('table-body');
+
+            async function loadData() {
+                try {
+                    const { data, error } = await client
+                        .from('testimonials')
+                        .select('*')
+                        .order('display_order');
+
+                    if (error) throw error;
+
+                    if (!data || data.length === 0) {
+                        tableBody.innerHTML = '<tr><td colspan="8" style="text-align: center; padding: 40px;">No testimonials found.</td></tr>';
+                        return;
+                    }
+
+                    tableBody.innerHTML = data.map(item => `
+                        <tr>
+                            <td><img src="${item.avatar_url || 'https://via.placeholder.com/48'}" class="thumbnail" style="border-radius: 50%;"></td>
+                            <td><strong>${app.escapeHtml(item.name)}</strong></td>
+                            <td>${app.escapeHtml(item.title || '-')}</td>
+                            <td>${app.escapeHtml(item.location || '-')}</td>
+                            <td>${'★'.repeat(item.rating)}${'☆'.repeat(5 - item.rating)}</td>
+                            <td>${item.is_featured ? '⭐' : '-'}</td>
+                            <td><span class="status-badge status-badge--${item.is_active ? 'active' : 'inactive'}">${item.is_active ? 'Active' : 'Inactive'}</span></td>
+                            <td class="actions">
+                                <button class="btn btn-sm btn-outline edit-btn" data-id="${item.id}">Edit</button>
+                                <button class="btn btn-sm btn-danger delete-btn" data-id="${item.id}">Delete</button>
+                            </td>
+                        </tr>
+                    `).join('');
+
+                    tableBody.querySelectorAll('.edit-btn').forEach(btn => {
+                        btn.addEventListener('click', () => editItem(btn.dataset.id));
+                    });
+                    tableBody.querySelectorAll('.delete-btn').forEach(btn => {
+                        btn.addEventListener('click', () => deleteItem(btn.dataset.id));
+                    });
+                } catch (error) {
+                    console.error('Error loading data:', error);
+                }
+            }
+
+            function openModal(isEdit = false) {
+                document.getElementById('modal-title').textContent = isEdit ? 'Edit Testimonial' : 'Add Testimonial';
+                if (!isEdit) {
+                    form.reset();
+                    document.getElementById('item-id').value = '';
+                }
+                modal.classList.add('active');
+            }
+
+            function closeModal() {
+                modal.classList.remove('active');
+            }
+
+            async function editItem(id) {
+                try {
+                    const { data } = await client.from('testimonials').select('*').eq('id', id).single();
+                    document.getElementById('item-id').value = data.id;
+                    document.getElementById('name').value = data.name || '';
+                    document.getElementById('title').value = data.title || '';
+                    document.getElementById('location').value = data.location || '';
+                    document.getElementById('rating').value = data.rating || 5;
+                    document.getElementById('rating-text').value = data.rating_text || '';
+                    document.getElementById('quote').value = data.quote || '';
+                    document.getElementById('avatar-url').value = data.avatar_url || '';
+                    document.getElementById('display-order').value = data.display_order || 0;
+                    document.getElementById('is-featured').checked = data.is_featured || false;
+                    document.getElementById('is-active').checked = data.is_active !== false;
+                    // Show avatar preview when editing
+                    showAvatarPreview(data.avatar_url || '');
+                    document.getElementById('avatar-upload-status').style.display = 'none';
+                    openModal(true);
+                } catch (error) {
+                    app.showToast('Error loading item', 'error');
+                }
+            }
+
+            async function deleteItem(id) {
+                if (await app.confirm('Delete this testimonial?')) {
+                    await app.delete('testimonials', id);
+                    app.showToast('Deleted successfully');
+                    loadData();
+                }
+            }
+
+            // ─── Avatar upload logic ───────────────────────────────────
+            const avatarUrlInput = document.getElementById('avatar-url');
+            const avatarFile = document.getElementById('avatar-file');
+            const avatarUploadBtn = document.getElementById('avatar-upload-btn');
+            const avatarUploadStatus = document.getElementById('avatar-upload-status');
+            const avatarPreview = document.getElementById('avatar-preview');
+            const avatarPreviewImg = document.getElementById('avatar-preview-img');
+
+            function showAvatarPreview(url) {
+                if (url) {
+                    avatarPreviewImg.src = url;
+                    avatarPreview.style.display = 'block';
+                } else {
+                    avatarPreview.style.display = 'none';
+                }
+            }
+
+            avatarUrlInput.addEventListener('input', () => showAvatarPreview(avatarUrlInput.value));
+
+            avatarUploadBtn.addEventListener('click', () => avatarFile.click());
+
+            avatarFile.addEventListener('change', async () => {
+                const file = avatarFile.files[0];
+                if (!file) return;
+
+                // Validate file size (max 2MB)
+                if (file.size > 2 * 1024 * 1024) {
+                    app.showToast('Image must be under 2MB', 'error');
+                    return;
+                }
+
+                avatarUploadBtn.disabled = true;
+                avatarUploadBtn.textContent = '⏳ Uploading...';
+                avatarUploadStatus.style.display = 'block';
+                avatarUploadStatus.textContent = 'Uploading ' + file.name + '...';
+
+                try {
+                    const publicUrl = await app.uploadImage('testimonials', file);
+                    avatarUrlInput.value = publicUrl;
+                    showAvatarPreview(publicUrl);
+                    avatarUploadStatus.textContent = '✅ Uploaded successfully!';
+                    avatarUploadStatus.style.color = '#16a34a';
+                    app.showToast('Avatar uploaded!');
+                } catch (error) {
+                    avatarUploadStatus.textContent = '❌ Upload failed: ' + error.message;
+                    avatarUploadStatus.style.color = '#dc2626';
+                    app.showToast('Upload failed: ' + error.message, 'error');
+                } finally {
+                    avatarUploadBtn.disabled = false;
+                    avatarUploadBtn.textContent = '📷 Click to upload avatar image';
+                    avatarFile.value = '';
+                }
+            });
+
+            // ─── Form submit ──────────────────────────────────────────────
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const id = document.getElementById('item-id').value;
+                const data = {
+                    name: document.getElementById('name').value,
+                    title: document.getElementById('title').value || null,
+                    location: document.getElementById('location').value || null,
+                    rating: parseInt(document.getElementById('rating').value),
+                    rating_text: document.getElementById('rating-text').value || null,
+                    quote: document.getElementById('quote').value,
+                    avatar_url: document.getElementById('avatar-url').value || null,
+                    display_order: parseInt(document.getElementById('display-order').value) || 0,
+                    is_featured: document.getElementById('is-featured').checked,
+                    is_active: document.getElementById('is-active').checked
+                };
+
+                try {
+                    if (id) {
+                        await app.update('testimonials', id, data);
+                    } else {
+                        await app.create('testimonials', data);
+                    }
+                    app.showToast('Saved successfully');
+                    closeModal();
+                    loadData();
+                } catch (error) {
+                    app.showToast('Error: ' + error.message, 'error');
+                }
+            });
+
+            document.getElementById('add-btn').addEventListener('click', () => {
+                showAvatarPreview('');
+                avatarUploadStatus.style.display = 'none';
+                openModal();
+            });
+            document.getElementById('cancel-btn').addEventListener('click', closeModal);
+            modal.querySelector('.modal-close').addEventListener('click', closeModal);
+            modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+
+            await loadData();
+        });
+    </script>
+</body>
+
+</html>

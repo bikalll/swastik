@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQs Manager - Swastik CMS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/admin.css">
+</head>
+
+<body class="admin-page">
+    <div class="admin-layout">
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <h2 class="sidebar-brand">Swastik CMS</h2>
+            </div>
+            <nav class="sidebar-nav">
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="../index.html" class="nav-link"><span>Dashboard</span></a></li>
+                    <li class="nav-item"><a href="hero.html" class="nav-link"><span>Hero Sections</span></a></li>
+                    <li class="nav-item"><a href="products.html" class="nav-link"><span>Products</span></a></li>
+                    <li class="nav-item"><a href="collections.html" class="nav-link"><span>Collections</span></a></li>
+                    <li class="nav-item"><a href="testimonials.html" class="nav-link"><span>Testimonials</span></a></li>
+                    <li class="nav-item"><a href="services.html" class="nav-link"><span>Services</span></a></li>
+                    <li class="nav-item"><a href="faqs.html" class="nav-link active"><span>FAQs</span></a></li>
+                    <li class="nav-item"><a href="partners.html" class="nav-link"><span>Partners</span></a></li>
+                    <li class="nav-item"><a href="settings.html" class="nav-link"><span>Site Settings</span></a></li>
+                </ul>
+            </nav>
+            <div class="sidebar-footer">
+                <button id="logout-btn" class="btn btn-ghost btn-full"><span>Logout</span></button>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header class="topbar">
+                <div class="topbar-left">
+                    <h1 class="page-title">FAQs</h1>
+                </div>
+                <div class="topbar-right">
+                    <button class="btn btn-primary" id="add-btn">Add FAQ</button>
+                </div>
+            </header>
+
+            <div class="content-area">
+                <div class="card">
+                    <div class="card-body" style="padding: 0;">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th style="width: 50px;">Order</th>
+                                    <th>Question</th>
+                                    <th>Status</th>
+                                    <th style="width: 120px;">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="table-body">
+                                <tr>
+                                    <td colspan="4" style="text-align: center; padding: 40px;">Loading...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div class="modal-overlay" id="modal">
+        <div class="modal" style="max-width: 700px;">
+            <div class="modal-header">
+                <h3 class="modal-title" id="modal-title">Add FAQ</h3>
+                <button class="modal-close">×</button>
+            </div>
+            <div class="modal-body">
+                <form id="item-form">
+                    <input type="hidden" id="item-id">
+
+                    <div class="form-group">
+                        <label for="question">Question *</label>
+                        <input type="text" id="question" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="answer">Answer * (HTML supported)</label>
+                        <textarea id="answer" class="form-control" rows="6" required
+                            placeholder="<p>Your answer here...</p>"></textarea>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="display-order">Display Order</label>
+                            <input type="number" id="display-order" class="form-control" value="0" min="0">
+                        </div>
+                        <div class="form-group">
+                            <label
+                                style="display: flex; align-items: center; gap: 8px; cursor: pointer; padding-top: 28px;">
+                                <input type="checkbox" id="is-active" checked> Active
+                            </label>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline" id="cancel-btn">Cancel</button>
+                <button type="submit" form="item-form" class="btn btn-primary">Save</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../../js/supabase-config.js"></script>
+    <script src="../js/admin-auth.js"></script>
+    <script src="../js/admin-app.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            const app = window.adminApp;
+            const client = window.SupabaseConfig?.getClient();
+            if (!client) return;
+
+            const modal = document.getElementById('modal');
+            const form = document.getElementById('item-form');
+            const tableBody = document.getElementById('table-body');
+
+            async function loadData() {
+                try {
+                    const { data, error } = await client.from('faqs').select('*').order('display_order');
+                    if (error) throw error;
+
+                    if (!data || data.length === 0) {
+                        tableBody.innerHTML = '<tr><td colspan="4" style="text-align: center; padding: 40px;">No FAQs found.</td></tr>';
+                        return;
+                    }
+
+                    tableBody.innerHTML = data.map(item => `
+                        <tr>
+                            <td>${item.display_order}</td>
+                            <td style="max-width: 500px;"><strong>${app.escapeHtml(item.question)}</strong></td>
+                            <td><span class="status-badge status-badge--${item.is_active ? 'active' : 'inactive'}">${item.is_active ? 'Active' : 'Inactive'}</span></td>
+                            <td class="actions">
+                                <button class="btn btn-sm btn-outline edit-btn" data-id="${item.id}">Edit</button>
+                                <button class="btn btn-sm btn-danger delete-btn" data-id="${item.id}">Delete</button>
+                            </td>
+                        </tr>
+                    `).join('');
+
+                    tableBody.querySelectorAll('.edit-btn').forEach(btn => btn.addEventListener('click', () => editItem(btn.dataset.id)));
+                    tableBody.querySelectorAll('.delete-btn').forEach(btn => btn.addEventListener('click', () => deleteItem(btn.dataset.id)));
+                } catch (error) {
+                    console.error('Error:', error);
+                }
+            }
+
+            function openModal(isEdit = false) {
+                document.getElementById('modal-title').textContent = isEdit ? 'Edit FAQ' : 'Add FAQ';
+                if (!isEdit) { form.reset(); document.getElementById('item-id').value = ''; }
+                modal.classList.add('active');
+            }
+
+            function closeModal() { modal.classList.remove('active'); }
+
+            async function editItem(id) {
+                try {
+                    const { data } = await client.from('faqs').select('*').eq('id', id).single();
+                    document.getElementById('item-id').value = data.id;
+                    document.getElementById('question').value = data.question || '';
+                    document.getElementById('answer').value = data.answer || '';
+                    document.getElementById('display-order').value = data.display_order || 0;
+                    document.getElementById('is-active').checked = data.is_active !== false;
+                    openModal(true);
+                } catch (error) {
+                    app.showToast('Error', 'error');
+                }
+            }
+
+            async function deleteItem(id) {
+                if (await app.confirm('Delete this FAQ?')) {
+                    await app.delete('faqs', id);
+                    app.showToast('Deleted');
+                    loadData();
+                }
+            }
+
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const id = document.getElementById('item-id').value;
+                const data = {
+                    question: document.getElementById('question').value,
+                    answer: document.getElementById('answer').value,
+                    display_order: parseInt(document.getElementById('display-order').value) || 0,
+                    is_active: document.getElementById('is-active').checked
+                };
+
+                try {
+                    if (id) { await app.update('faqs', id, data); }
+                    else { await app.create('faqs', data); }
+                    app.showToast('Saved');
+                    closeModal();
+                    loadData();
+                } catch (error) {
+                    app.showToast('Error: ' + error.message, 'error');
+                }
+            });
+
+            document.getElementById('add-btn').addEventListener('click', () => openModal());
+            document.getElementById('cancel-btn').addEventListener('click', closeModal);
+            modal.querySelector('.modal-close').addEventListener('click', closeModal);
+            modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+
+            await loadData();
+        });
+    </script>
+</body>
+
+</html>

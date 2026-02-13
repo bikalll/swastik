@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Site Settings - Swastik CMS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/admin.css">
+</head>
+
+<body class="admin-page">
+    <div class="admin-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <h2 class="sidebar-brand">Swastik CMS</h2>
+            </div>
+            <nav class="sidebar-nav">
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="../index.html" class="nav-link"><span>Dashboard</span></a></li>
+                    <li class="nav-item"><a href="hero.html" class="nav-link"><span>Hero Sections</span></a></li>
+                    <li class="nav-item"><a href="products.html" class="nav-link"><span>Products</span></a></li>
+                    <li class="nav-item"><a href="collections.html" class="nav-link"><span>Collections</span></a></li>
+                    <li class="nav-item"><a href="testimonials.html" class="nav-link"><span>Testimonials</span></a></li>
+                    <li class="nav-item"><a href="services.html" class="nav-link"><span>Services</span></a></li>
+                    <li class="nav-item"><a href="faqs.html" class="nav-link"><span>FAQs</span></a></li>
+                    <li class="nav-item"><a href="partners.html" class="nav-link"><span>Partners</span></a></li>
+                    <li class="nav-item"><a href="settings.html" class="nav-link active"><span>Site Settings</span></a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="sidebar-footer">
+                <button id="logout-btn" class="btn btn-ghost btn-full"><span>Logout</span></button>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="topbar">
+                <div class="topbar-left">
+                    <h1 class="page-title">Site Settings</h1>
+                </div>
+            </header>
+
+            <div class="content-area">
+                <!-- Contact Information -->
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">Contact Information</h2>
+                    </div>
+                    <div class="card-body">
+                        <form id="contact-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="site-name">Site Name</label>
+                                    <input type="text" id="site-name" class="form-control" data-key="site_name">
+                                </div>
+                                <div class="form-group">
+                                    <label for="tagline">Tagline</label>
+                                    <input type="text" id="tagline" class="form-control" data-key="tagline">
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="phone">Phone Number</label>
+                                    <input type="text" id="phone" class="form-control" data-key="phone">
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Email Address</label>
+                                    <input type="email" id="email" class="form-control" data-key="email">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="address">Address</label>
+                                <input type="text" id="address" class="form-control" data-key="address">
+                            </div>
+
+                            <div class="form-actions">
+                                <button type="submit" class="btn btn-primary">Save Contact Info</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Social Links -->
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">Social Media Links</h2>
+                    </div>
+                    <div class="card-body">
+                        <form id="social-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="facebook">Facebook URL</label>
+                                    <input type="url" id="facebook" class="form-control" data-key="facebook_url"
+                                        placeholder="https://facebook.com/...">
+                                </div>
+                                <div class="form-group">
+                                    <label for="instagram">Instagram URL</label>
+                                    <input type="url" id="instagram" class="form-control" data-key="instagram_url"
+                                        placeholder="https://instagram.com/...">
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="tiktok">TikTok URL</label>
+                                    <input type="url" id="tiktok" class="form-control" data-key="tiktok_url"
+                                        placeholder="https://tiktok.com/...">
+                                </div>
+                                <div class="form-group">
+                                    <label for="pinterest">Pinterest URL</label>
+                                    <input type="url" id="pinterest" class="form-control" data-key="pinterest_url"
+                                        placeholder="https://pinterest.com/...">
+                                </div>
+                            </div>
+
+                            <div class="form-actions">
+                                <button type="submit" class="btn btn-primary">Save Social Links</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Footer Settings -->
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">Footer Settings</h2>
+                    </div>
+                    <div class="card-body">
+                        <form id="footer-form">
+                            <div class="form-group">
+                                <label for="footer-description">Footer Description</label>
+                                <textarea id="footer-description" class="form-control" rows="3"
+                                    data-key="footer_description"></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="copyright">Copyright Text</label>
+                                <input type="text" id="copyright" class="form-control" data-key="copyright_text">
+                            </div>
+
+                            <div class="form-actions">
+                                <button type="submit" class="btn btn-primary">Save Footer Settings</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../../js/supabase-config.js"></script>
+    <script src="../js/admin-auth.js"></script>
+    <script src="../js/admin-app.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            const app = window.adminApp;
+            const client = window.SupabaseConfig?.getClient();
+            if (!client) return;
+
+            // Load settings
+            async function loadSettings() {
+                try {
+                    const { data, error } = await client.from('site_settings').select('*');
+                    if (error) throw error;
+
+                    // Populate form fields
+                    data.forEach(setting => {
+                        const input = document.querySelector(`[data-key="${setting.key}"]`);
+                        if (input) {
+                            input.value = setting.value || '';
+                        }
+                    });
+                } catch (error) {
+                    console.error('Error loading settings:', error);
+                }
+            }
+
+            // Save settings from a form
+            async function saveSettings(form) {
+                const inputs = form.querySelectorAll('[data-key]');
+
+                for (const input of inputs) {
+                    const key = input.dataset.key;
+                    const value = input.value;
+
+                    try {
+                        // Upsert the setting
+                        const { error } = await client
+                            .from('site_settings')
+                            .upsert({ key, value, type: 'text' }, { onConflict: 'key' });
+
+                        if (error) throw error;
+                    } catch (error) {
+                        console.error(`Error saving ${key}:`, error);
+                        app.showToast(`Error saving ${key}`, 'error');
+                        return false;
+                    }
+                }
+
+                return true;
+            }
+
+            // Form handlers
+            document.getElementById('contact-form').addEventListener('submit', async (e) => {
+                e.preventDefault();
+                if (await saveSettings(e.target)) {
+                    app.showToast('Contact info saved successfully');
+                }
+            });
+
+            document.getElementById('social-form').addEventListener('submit', async (e) => {
+                e.preventDefault();
+                if (await saveSettings(e.target)) {
+                    app.showToast('Social links saved successfully');
+                }
+            });
+
+            document.getElementById('footer-form').addEventListener('submit', async (e) => {
+                e.preventDefault();
+                if (await saveSettings(e.target)) {
+                    app.showToast('Footer settings saved successfully');
+                }
+            });
+
+            // Initialize
+            await loadSettings();
+        });
+    </script>
+</body>
+
+</html>
